@@ -18,14 +18,12 @@
 			</picture>
 		</span>
 
-		to your new<br />SvelteKit app
+		My computer graphics class work
 	</h1>
 
-	<h2>
-		try editing <strong>src/routes/+page.svelte</strong>
-	</h2>
-
-	<Counter />
+	<ul>
+		<li><a href="/assignment1">Assignment 1</a></li>
+	</ul>
 </section>
 
 <style>
