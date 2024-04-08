@@ -89,6 +89,20 @@
     animation
 </button>
 
+<div>
+    <p>
+        The goal of this assignment is to prove the architecture we'll be using to display WebGL 3D graphics in a web application. We want to show that we can successfully:
+    </p>
+
+    <ul>
+        <li>Use the three.js library to create a 3D scene</li>
+        <li>Render the scene to a canvas element</li>
+        <li>Control the animation of the scene</li>
+        <li>All in a Svelte app</li>
+        <li>Deployed to the Web</li>
+    </ul>
+</div>
+
 <style>
 
 </style>
