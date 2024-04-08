@@ -74,9 +74,10 @@
         renderer.render(scene, camera);
     });
 </script>
-    
+
+<h1>Hello World! using three.js</h1>
+
 <div id="scene-container">
-    <h1>Hello World! using three.js</h1>
 </div>
 
 <button on:click={toggleWireframe}>
@@ -104,5 +105,12 @@
 </div>
 
 <style>
-
+    button {
+        border-radius: 50px;
+        background-color: crimson;
+        color: white;
+        width: 180px;
+        height: 30px;
+        margin: 10px;
+    }
 </style>
