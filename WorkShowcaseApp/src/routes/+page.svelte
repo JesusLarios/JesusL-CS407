@@ -23,6 +23,7 @@
 
 	<ul>
 		<li><a href="/assignment1">Assignment 1</a></li>
+		<li><a href="/assignment2">Assignment 2</a></li>
 	</ul>
 </section>
 
