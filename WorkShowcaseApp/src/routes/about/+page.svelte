@@ -1,26 +1,45 @@
+<script>
+	import github from '$lib/images/github.svg';
+</script>
+
 <svelte:head>
 	<title>About</title>
 	<meta name="description" content="About this app" />
 </svelte:head>
 
 <div class="text-column">
-	<h1>About this app</h1>
+	<h1>Jesus Larios's portfolio</h1>
+
+	<h2>
+		<strong>CS407 computer graphics semiar class at WOU.</strong>
+	</h2>
 
 	<p>
-		This is a <a href="https://kit.svelte.dev">SvelteKit</a> app. You can make your own by typing the
-		following into your command line and following the prompts:
+		The work showcased here is from spring term of 2024. All assignments will
+		have their own page and demonstrate what I have learned regarding
+		computer graphics. This involves work with WebGL, three.js, and other topics
+		such as WASM, Svelte, and data visualization with D3.js.
 	</p>
 
-	<pre>npm create svelte@latest</pre>
-
 	<p>
-		The page you're looking at is purely static HTML, with no client-side interactivity needed.
-		Because of that, we don't need to load any JavaScript. Try viewing the page's source, or opening
-		the devtools network panel and reloading.
-	</p>
-
-	<p>
-		The <a href="/sverdle">Sverdle</a> page illustrates SvelteKit's data loading and form handling. Try
-		using it with JavaScript disabled!
+		<a href="https://github.com/sveltejs/kit">
+			<img src={github} alt="GitHub" />
+		</a>
+		My GitHub repository: 
+		<a href="https://github.com/JesusLarios/JesusL-CS407">
+			https://github.com/JesusLarios/JesusL-CS407
+		</a>
 	</p>
 </div>
+
+<style>
+	h2 {
+		text-align: center;
+	}
+
+	a img {
+		width: 1.2em;
+		height: 1.2em;
+		object-fit: contain;
+	}
+</style>
