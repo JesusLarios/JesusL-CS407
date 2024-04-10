@@ -4,10 +4,10 @@
       DirectionalLight,
       CapsuleGeometry,
       TorusKnotGeometry,
-      BoxGeometry,
       Color,
       Mesh,
-      MeshStandardMaterial,
+      MeshPhongMaterial,
+      MeshLambertMaterial,
       PerspectiveCamera,
       Scene,
       WebGLRenderer,
@@ -35,7 +35,7 @@
 
     // Switch the old "basic" material to
     // a physically correct "standard" material
-    const material = new MeshStandardMaterial({ color: 'brown' });
+    const material = new MeshLambertMaterial({ color: 'brown' });
 
     const torusKnot = new Mesh(geometry, material);
 
@@ -48,11 +48,11 @@
 
   //capsule.js CODE
   function createCapsule() {
-    const geometry = new CapsuleGeometry(3, 3, 13, 4);
+    const geometry = new CapsuleGeometry(3, 3, 13, 12);
 
     // Switch the old "basic" material to
     // a physically correct "standard" material
-    const material = new MeshStandardMaterial({ color: 'green' });
+    const material = new MeshPhongMaterial({ color: 'green' });
 
     const capsule = new Mesh(geometry, material);
 
