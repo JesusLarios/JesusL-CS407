@@ -1,16 +1,17 @@
 <script>
   import { onMount } from 'svelte';
   import {
-      DirectionalLight,
-      CapsuleGeometry,
-      TorusKnotGeometry,
-      Color,
-      Mesh,
-      MeshPhongMaterial,
-      MeshLambertMaterial,
-      PerspectiveCamera,
-      Scene,
-      WebGLRenderer,
+    PointLight,
+    DirectionalLight,
+    CapsuleGeometry,
+    TorusKnotGeometry,
+    Color,
+    Mesh,
+    MeshPhongMaterial,
+    MeshLambertMaterial,
+    PerspectiveCamera,
+    Scene,
+    WebGLRenderer,
   } from 'three';
 
   // camera.js CODE
@@ -70,6 +71,18 @@
 
       // move the light right, up, and towards us
       light.position.set(20, 31, 31);
+
+      return light;
+  }
+
+
+  // pointLights.js CODE
+  function createPointLights() {
+      // Create a directional light
+      const light = new PointLight('red', 10000, 100);
+
+      // move the light right, up, and towards us
+      light.position.set(0, -15, -10);
 
       return light;
   }
@@ -136,8 +149,9 @@
           const torusKnot = createTorusKnot();
           const capsule = createCapsule();
           const light = createLights();
+          const spotLight = createPointLights();
 
-          scene.add(torusKnot, capsule, light);
+          scene.add(torusKnot, capsule, light, spotLight);
 
           const resizer = new Resizer(container, camera, renderer);
       }
