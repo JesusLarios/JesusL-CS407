@@ -29,19 +29,37 @@
   }
 
 
-  //cube.js CODE
-  function createCube() {
-      const geometry = new BoxGeometry(2, 2, 2);
+  //torusKnot.js CODE
+  function createTorusKnot() {
+    const geometry = new TorusKnotGeometry(3, 1, 300, 16, 1, 6);
 
-      // Switch the old "basic" material to
-      // a physically correct "standard" material
-      const material = new MeshStandardMaterial({ color: 'purple' });
+    // Switch the old "basic" material to
+    // a physically correct "standard" material
+    const material = new MeshStandardMaterial({ color: 'brown' });
 
-      const cube = new Mesh(geometry, material);
+    const torusKnot = new Mesh(geometry, material);
 
-      cube.rotation.set(-0.5, -0.1, 0.8);
+    torusKnot.rotation.set(-0.5, 2.6, 1.5);
+    torusKnot.position.set(-8, -9, -10)
 
-      return cube;
+    return torusKnot;
+  }
+
+
+  //capsule.js CODE
+  function createCapsule() {
+    const geometry = new CapsuleGeometry(3, 3, 13, 4);
+
+    // Switch the old "basic" material to
+    // a physically correct "standard" material
+    const material = new MeshStandardMaterial({ color: 'green' });
+
+    const capsule = new Mesh(geometry, material);
+
+    capsule.rotation.set(-1.5, 2.6, 1.5);
+    capsule.position.set(8, 9, -5)
+
+    return capsule;
   }
 
 
@@ -115,10 +133,11 @@
           renderer = createRenderer();
           container.append(renderer.domElement);
 
-          const cube = createCube();
+          const torusKnot = createTorusKnot();
+          const capsule = createCapsule();
           const light = createLights();
 
-          scene.add(cube, light);
+          scene.add(torusKnot, capsule, light);
 
           const resizer = new Resizer(container, camera, renderer);
       }
