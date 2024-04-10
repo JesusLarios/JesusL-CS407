@@ -167,6 +167,16 @@
   <div id="scene-container">
   <!-- Our <canvas> will be inserted here -->
   </div>
+
+  <p>The goal of this assignment is to use the World App architecture from Discover three.js
+    book to:
+  </p>
+
+  <ul>
+    <li>Wrap the three.js scene in a World class that hides its implementation</li>
+    <li>refactor the design into separate modules for the scene, camera, objects, renderer, lights, ...</li>
+    <li>and that does a little more than the last assignment, in terms of objects and specifically a lighting effect</li>
+  </ul>
 </body>
 
 
@@ -197,8 +207,8 @@ z-index: 1;
 #scene-container {
 /* tell our scene container to take up the full page */
 position: absolute;
-width: 100%;
-height: 100%;
+width: 60%;
+height: 60%;
 
 
 /*
