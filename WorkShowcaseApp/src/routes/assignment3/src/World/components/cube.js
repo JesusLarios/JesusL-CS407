@@ -1,7 +1,7 @@
-import { BoxBufferGeometry, Mesh, MeshStandardMaterial } from 'three';
+import { BoxGeometry, Mesh, MeshStandardMaterial } from 'three';
 
 function createCube() {
-  const geometry = new BoxBufferGeometry(2, 2, 2);
+  const geometry = new BoxGeometry(2, 2, 2);
 
   // Switch the old "basic" material to
   // a physically correct "standard" material
