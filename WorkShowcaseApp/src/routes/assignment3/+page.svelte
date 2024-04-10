@@ -35,7 +35,7 @@
 
     // Switch the old "basic" material to
     // a physically correct "standard" material
-    const material = new MeshLambertMaterial({ color: 'brown' });
+    const material = new MeshLambertMaterial({ color: 'brown'});
 
     const torusKnot = new Mesh(geometry, material);
 
@@ -52,7 +52,7 @@
 
     // Switch the old "basic" material to
     // a physically correct "standard" material
-    const material = new MeshPhongMaterial({ color: 'green' });
+    const material = new MeshPhongMaterial({ color: 'green', flatShading: true, shininess: 90});
 
     const capsule = new Mesh(geometry, material);
 
