@@ -12,6 +12,11 @@ let scene;
 let camera;
 let renderer;
 
+let capsule;
+let torusKnot;
+let light;
+let pointLight;
+
 class World {
   constructor(container) {
     camera = createCamera();
@@ -19,10 +24,10 @@ class World {
     renderer = createRenderer();
     container.append(renderer.domElement);
 
-    const capsule = createCapsule();
-    const torusKnot = createTorusKnot();
-    const light = createLights();
-    const pointLight = createPointLights();
+    capsule = createCapsule();
+    torusKnot = createTorusKnot();
+    light = createLights();
+    pointLight = createPointLights();
 
     scene.add(capsule, torusKnot, light, pointLight);
 
@@ -32,6 +37,17 @@ class World {
   render() {
     // draw a single frame
     renderer.render(scene, camera);
+  }
+
+  toggleCapsuleReflection(showCapsuleReflection) {
+    if (showCapsuleReflection)
+    {
+      capsule.material.shininess = 90;
+    }
+    else
+    {
+      capsule.material.shininess = 0;
+    }
   }
 }
 
