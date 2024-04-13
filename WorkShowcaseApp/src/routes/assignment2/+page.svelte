@@ -40,13 +40,15 @@
     }
     
     onMount(() => {
+        const container = document.querySelector('#scene-container');
+
         //Create a scene
         scene = new Scene();
         scene.background = new Color('dimgray');
 
         // Create a camera
         const fov = 10; // AKA Field of View
-        const aspect = window.innerWidth / window.innerHeight;
+        const aspect = container.clientWidth / container.clientHeight;
         const near = 0.1; // the near clipping plane
         const far = 200; // the far clipping plane
         camera = new PerspectiveCamera(fov, aspect, near, far);
@@ -64,10 +66,9 @@
         
         // Create a renderer
         renderer = new WebGLRenderer();
-        renderer.setSize(window.innerWidth/2, window.innerHeight/2);
+        renderer.setSize(container.clientWidth, container.clientHeight);
 
         // Add the automatically created <canvas> element to the page
-        const container = document.querySelector('#scene-container');
         container.append(renderer.domElement);
         
         // Render, or 'create a still image', of the scene
@@ -77,31 +78,34 @@
 
 <h1>Hello World! using three.js</h1>
 
-<div id="scene-container">
-</div>
+<div class="container mt-5">
+    <div class="row">
+        <div class="col-md-2">
+            <button on:click={toggleWireframe}>
+                {showWireframe ? 'Hide' : 'Show'} Wireframe
+            </button>
+            <button on:click={toggleAnimation}>
+                {showAnimation ? 'Stop' : 'Start'} Animation
+            </button>
+        </div>
 
-<button on:click={toggleWireframe}>
-    {showWireframe ? 'Hide' :' Show'}
-    wireframe
-</button>
+        <div class="col-md-7">
+            <div id="scene-container" style="height: 500px;">
+                <!-- Canvas will be dynamically inserted here -->
+            </div>
+        </div>
 
-<button on:click={toggleAnimation}>
-    {showAnimation ? 'Stop' :' Start'}
-    animation
-</button>
-
-<div>
-    <p>
-        The goal of this assignment is to prove the architecture we'll be using to display WebGL 3D graphics in a web application. We want to show that we can successfully:
-    </p>
-
-    <ul>
-        <li>Use the three.js library to create a 3D scene</li>
-        <li>Render the scene to a canvas element</li>
-        <li>Control the animation of the scene</li>
-        <li>All in a Svelte app</li>
-        <li>Deployed to the Web</li>
-    </ul>
+        <div class="col-md-3">
+            <h4>Project Goals</h4>
+            <ul>
+                <li>Use the three.js library to create a 3D scene</li>
+                <li>Render the scene to a canvas element</li>
+                <li>Control the animation of the scene</li>
+                <li>All in a Svelte app</li>
+                <li>Deployed to the Web</li>
+            </ul>
+        </div>
+    </div>
 </div>
 
 <style>
