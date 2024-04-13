@@ -2,12 +2,20 @@
   import { onMount } from 'svelte';
   import { World } from './src/World/World.js'
 
+  let world;
+  let reflectionToggle = true;
+
   onMount(() => {
     const container = document.querySelector('#scene-container');
-    const world = new World(container);
+    world = new World(container);
     world.render();
-
   });
+
+  $: if (world) {
+    world.toggleCapsuleReflection(reflectionToggle);
+    world.render();
+  }
+
 </script>
 
 <h1>Discoverthreejs.com - Physically Based Rendering</h1>
@@ -15,6 +23,10 @@
 <div class="container mt-5">
   <div class="row">
       <div class="col-md-2">
+        <label>
+          <input type="checkbox" bind:checked={reflectionToggle}>
+          Toggle capsule reflection
+        </label>
           <!-- Buttons go here -->
       </div>
 
