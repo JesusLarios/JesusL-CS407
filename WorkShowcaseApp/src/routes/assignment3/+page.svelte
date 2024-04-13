@@ -175,60 +175,37 @@
   });
 </script>
 
-<body>
-  <h1>Discoverthreejs.com - Physically Based Rendering</h1>
+<h1>Discoverthreejs.com - Physically Based Rendering</h1>
 
-  <div id="scene-container">
-  <!-- Our <canvas> will be inserted here -->
+<div class="container mt-5">
+  <div class="row">
+      <div class="col-md-2">
+          <!-- Buttons go here -->
+      </div>
+
+      <div class="col-md-7">
+          <div id="scene-container" style="height: 600px;">
+              <!-- Canvas will be dynamically inserted here -->
+          </div>
+      </div>
+
+      <div class="col-md-3">
+        <p>The goal of this assignment is to use the World App architecture from Discover three.js
+          book to:
+        </p>
+      
+        <ul>
+          <li>Wrap the three.js scene in a World class that hides its implementation</li>
+          <li>refactor the design into separate modules for the scene, camera, objects, renderer, lights, ...</li>
+          <li>and that does a little more than the last assignment, in terms of objects and specifically a lighting effect</li>
+        </ul>
+      </div>
   </div>
-
-  <p>The goal of this assignment is to use the World App architecture from Discover three.js
-    book to:
-  </p>
-
-  <ul>
-    <li>Wrap the three.js scene in a World class that hides its implementation</li>
-    <li>refactor the design into separate modules for the scene, camera, objects, renderer, lights, ...</li>
-    <li>and that does a little more than the last assignment, in terms of objects and specifically a lighting effect</li>
-  </ul>
-</body>
+</div>
 
 
 <style>
-body {
-/* remove margins and scroll bars */
-margin: 0;
-overflow: hidden;
-
-/* style text */
-text-align: center;
-font-size: 12px;
-font-family: Sans-Serif;
-
-/* color text */
-color: #444;
-}
-
-h1 {
-/* position the heading */
-position: absolute;
-width: 100%;
-
-/* make sure that the heading is drawn on top */
-z-index: 1;
-}
-
-#scene-container {
-/* tell our scene container to take up the full page */
-position: absolute;
-width: 60%;
-height: 60%;
-
-
-/*
-  Set the container's background color to the same as the scene's
-  background to prevent flashing on load
-*/
-background-color: skyblue;
-}
+  #scene-container {
+    background-color: dimgray;
+  }
 </style>
