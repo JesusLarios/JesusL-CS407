@@ -49,6 +49,10 @@ class World {
       capsule.material.shininess = 0;
     }
   }
+
+  setPointLightColor(color) {
+    pointLight.color.set(color);
+  }
 }
 
 export { World };
