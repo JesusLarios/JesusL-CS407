@@ -18,10 +18,10 @@
     let camera;
 
     function toggleWireframe() {
-            showWireframe = !showWireframe;
-            cone.material.wireframe = showWireframe;
-            renderer.render(scene, camera);
-        }
+        showWireframe = !showWireframe;
+        cone.material.wireframe = showWireframe;
+        renderer.render(scene, camera);
+    }
 
     function toggleAnimation() {
         showAnimation = !showAnimation;
@@ -109,12 +109,17 @@
 </div>
 
 <style>
+    #scene-container {
+        background-color: dimgray;
+    }
+
     button {
-        border-radius: 50px;
-        background-color: crimson;
+        width: 100%;
+        height: 40px;
+        margin-bottom: 25px;
+        border-radius: 20px;
         color: white;
-        width: 180px;
-        height: 30px;
-        margin: 10px;
+        background-color: crimson;
+        border: solid crimson;
     }
 </style>
