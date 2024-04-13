@@ -206,6 +206,6 @@
 
 <style>
   #scene-container {
-    background-color: dimgray;
+    background-color: skyblue;
   }
 </style>
