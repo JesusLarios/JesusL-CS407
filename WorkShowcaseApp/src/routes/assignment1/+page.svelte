@@ -69,42 +69,21 @@
     </div>
 </body>
 
-
 <style>
-body {
-  /* remove margins and scroll bars */
-  margin: 0;
-  overflow: hidden;
+  h1 {
+      margin: 0;
+      width: 98%;
+      position: absolute;
+      font-family: Sans-Serif;
+      color: #444;
 
-  /* style text */
-  text-align: center;
-  font-size: 12px;
-  font-family: Sans-Serif;
+      /* make sure that the heading is drawn on top */
+      z-index: 1;
+  }
 
-  /* color text */
-  color: #444;
-}
-
-h1 {
-  /* position the heading */
-  position: absolute;
-  width: 100%;
-
-  /* make sure that the heading is drawn on top */
-  z-index: 1;
-}
-
-#scene-container {
-  /* tell our scene container to take up the full page */
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  
-
-  /*
-    Set the container's background color to the same as the scene's
-    background to prevent flashing on load
-  */
-  background-color: skyblue;
-}
+  #scene-container {
+      position: relative;
+      min-height: 100vh;
+      background-color: skyblue;
+  }
 </style>
