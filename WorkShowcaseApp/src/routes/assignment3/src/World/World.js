@@ -1,6 +1,8 @@
 import { createCamera } from './components/camera.js';
-import { createCube } from './components/cube.js';
+import { createCapsule } from './components/capsule.js';
+import { createTorusKnot } from './components/torusKnot.js';
 import { createLights } from './components/lights.js';
+import { createPointLights } from './components/pointLights.js';
 import { createScene } from './components/scene.js';
 
 import { createRenderer } from './systems/renderer.js';
@@ -17,10 +19,12 @@ class World {
     renderer = createRenderer();
     container.append(renderer.domElement);
 
-    const cube = createCube();
+    const capsule = createCapsule();
+    const torusKnot = createTorusKnot();
     const light = createLights();
+    const pointLight = createPointLights();
 
-    scene.add(cube, light);
+    scene.add(capsule, torusKnot, light, pointLight);
 
     const resizer = new Resizer(container, camera, renderer);
   }
