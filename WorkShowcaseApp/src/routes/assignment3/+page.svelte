@@ -4,6 +4,7 @@
 
   let world;
   let reflectionToggle = true;
+  let pointLightcolor = 'red';
 
   onMount(() => {
     const container = document.querySelector('#scene-container');
@@ -16,6 +17,10 @@
     world.render();
   }
 
+  $: if (world) {
+    world.setPointLightColor(pointLightcolor);
+    world.render();
+  }
 </script>
 
 <h1>Discoverthreejs.com - Physically Based Rendering</h1>
@@ -27,7 +32,9 @@
           <input type="checkbox" bind:checked={reflectionToggle}>
           Toggle capsule reflection
         </label>
-          <!-- Buttons go here -->
+
+        <label for="pointColor" class="form-label">Point light color</label>
+        <input type="color" class="form-control form-control-color" id="pointColor" bind:value={pointLightcolor}>
       </div>
 
       <div class="col-md-7">
