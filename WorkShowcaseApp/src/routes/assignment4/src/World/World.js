@@ -1,9 +1,8 @@
 import { createCamera } from './components/camera.js';
-import { createCapsule } from './components/capsule.js';
-import { createTorusKnot } from './components/torusKnot.js';
 import { createCube } from './components/cube.js';
 import { createLights } from './components/lights.js';
 import { createPointLights } from './components/pointLights.js';
+import { createAmbientLights } from './components/ambientLights.js';
 import { createScene } from './components/scene.js';
 
 import { createRenderer } from './systems/renderer.js';
@@ -17,6 +16,7 @@ let loop;
 
 let cube;
 let light;
+let ambientLight;
 
 class World {
   constructor(container) {
@@ -28,10 +28,11 @@ class World {
 
     cube = createCube();
     light = createLights();
+    ambientLight = createAmbientLights();
 
     loop.updatables.push(cube);
 
-    scene.add(cube, light);
+    scene.add(cube, light, ambientLight);
 
     const resizer = new Resizer(container, camera, renderer);
   }
