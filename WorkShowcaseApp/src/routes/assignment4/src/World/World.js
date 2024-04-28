@@ -1,7 +1,6 @@
 import { createCamera } from './components/camera.js';
-import { createCube } from './components/cube.js';
+import { createCar } from './components/car.js';
 import { createLights } from './components/lights.js';
-import { createPointLights } from './components/pointLights.js';
 import { createAmbientLights } from './components/ambientLights.js';
 import { createScene } from './components/scene.js';
 
@@ -14,7 +13,7 @@ let camera;
 let renderer;
 let loop;
 
-let cube;
+let car;
 let light;
 let ambientLight;
 
@@ -26,13 +25,13 @@ class World {
     loop = new Loop(camera, scene, renderer);
     container.append(renderer.domElement);
 
-    cube = createCube();
+    car = createCar();
     light = createLights();
     ambientLight = createAmbientLights();
 
-    loop.updatables.push(cube);
+    loop.updatables.push(car);
 
-    scene.add(cube, light, ambientLight);
+    scene.add(light, ambientLight, car);
 
     const resizer = new Resizer(container, camera, renderer);
   }
