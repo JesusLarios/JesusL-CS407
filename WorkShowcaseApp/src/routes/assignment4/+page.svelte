@@ -5,7 +5,7 @@
   let world;
   let carRotation = false;
   let carSpeed = 0;
-  let carColor = 'FireBrick';
+  let carColor = '#d68b09';
 
   onMount(() => {
     const container = document.querySelector('#scene-container');
