@@ -84,6 +84,20 @@ class World {
   setPointLightColor(color) {
     pointLight.color.set(color);
   }
+
+  togglePointLight(enabled) {
+    if (enabled)
+      pointLight.intensity = 20000;
+    else
+      pointLight.intensity = 0;
+  }
+
+  toggleAmbientLight(enabled) {
+    if (enabled)
+      ambientLight.intensity = 20;
+    else
+      ambientLight.intensity = 0;
+  }
 }
 
 export { World };

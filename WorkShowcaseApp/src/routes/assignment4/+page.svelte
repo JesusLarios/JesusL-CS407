@@ -7,6 +7,8 @@
   let carSpeed = 0;
   let carColor = '#d68b09';
   let pointLightColor = 'red';
+  let pointLightEnabled = true;
+  let ambientLightEnabled = true;
 
   onMount(() => {
     const container = document.querySelector('#scene-container');
@@ -17,7 +19,6 @@
     });
   });
 
-
   function toggleCarRotation() {
     carRotation = !carRotation;
     world.toggleCarRotation(carRotation);
@@ -25,6 +26,14 @@
 
   function handleSpeedChange() {
     world.setCarSpeed(carSpeed);
+  }
+
+  function togglePointLight() {
+    world.togglePointLight(pointLightEnabled);
+  }
+
+  function toggleAmbientLight() {
+    world.toggleAmbientLight(ambientLightEnabled);
   }
 
   $: if (world) {
@@ -44,22 +53,32 @@
   <div class="row">
       <div class="col-md-2">
         <!-- User options go here -->
-      <h4 class="text-center mb-3">Controls</h4>
+        <h4 class="text-center mb-3">Controls</h4>
 
-      <hr>
+        <hr>
 
-      <button on:click={toggleCarRotation}>
-        {carRotation ? 'Stop' : 'Start'} car rotation
-      </button>
-      
-      <label for="carSpeedSlider" class="form-label mt-3">Car speed: {carSpeed}</label>
-      <input type="range" min="0" max="540" step="10" id="carSpeedSlider" bind:value={carSpeed} on:change={handleSpeedChange}/>
+        <button on:click={toggleCarRotation}>
+          {carRotation ? 'Stop' : 'Start'} car rotation
+        </button>
+        
+        <label for="carSpeedSlider" class="form-label mt-3">Car speed: {carSpeed}</label>
+        <input type="range" min="0" max="540" step="10" id="carSpeedSlider" bind:value={carSpeed} on:change={handleSpeedChange}/>
 
-      <label for="carColor" class="form-label mt-4">Car body color</label>
-      <input type="color" class="form-control form-control-color" id="carColor" bind:value={carColor}>
+        <label for="carColor" class="form-label mt-4">Car body color</label>
+        <input type="color" class="form-control form-control-color" id="carColor" bind:value={carColor}>
 
-      <label for="pointLightColor" class="form-label mt-4">Point light color</label>
-      <input type="color" class="form-control form-control-color" id="pointLightColor" bind:value={pointLightColor}>
+        <label for="pointLightColor" class="form-label mt-4">Point light color</label>
+        <input type="color" class="form-control form-control-color" id="pointLightColor" bind:value={pointLightColor}>
+
+        <div class="form-check form-switch">
+          <label class="form-check-label mt-5" for="pointLightToggle">Point light</label>
+          <input class="form-check-input mt-5" type="checkbox" role="switch" id="pointLightToggle" bind:checked={pointLightEnabled} on:change={togglePointLight}>
+        </div>
+
+        <div class="form-check form-switch">
+          <label class="form-check-label" for="ambientLightToggle">Ambient light</label>
+          <input class="form-check-input" type="checkbox" role="switch" id="ambientLightToggle" bind:checked={ambientLightEnabled} on:change={toggleAmbientLight}>
+        </div>
       </div>
 
       <div class="col-md-7">
