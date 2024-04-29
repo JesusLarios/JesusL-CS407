@@ -3,6 +3,7 @@
   import { World } from './src/World/World.js'
 
   let world;
+  let carRotation = false;
 
   onMount(() => {
     const container = document.querySelector('#scene-container');
@@ -12,6 +13,12 @@
       world.turnFrontTires(event.key);
     });
   });
+
+
+  function toggleCarRotation() {
+    carRotation = !carRotation;
+    world.toggleCarRotation(carRotation);
+  }
 </script>
 
 <h1>Hierarchical Scene & Transformations with Animation</h1>
@@ -20,6 +27,9 @@
   <div class="row">
       <div class="col-md-2">
         <!-- User options go here -->
+        <button on:click={toggleCarRotation}>
+          {carRotation ? 'Stop' : 'Start'} car rotation
+      </button>
       </div>
 
       <div class="col-md-7">
@@ -48,4 +58,14 @@
   #scene-container {
     background-color: lightsteelblue;
   }
+
+  button {
+        width: 100%;
+        height: 40px;
+        margin-bottom: 25px;
+        border-radius: 20px;
+        color: white;
+        background-color: blue;
+        border: solid blue;
+    }
 </style>

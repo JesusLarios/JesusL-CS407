@@ -59,6 +59,15 @@ class World {
       car.frontTireAngle = MathUtils.degToRad(-20);
     }
   }
+
+  toggleCarRotation(rotate) {
+    if (rotate) {
+      car.rotationSpeed = MathUtils.degToRad(60);
+    }
+    else {
+      car.rotationSpeed = 0;
+    }
+  }
 }
 
 export { World };
