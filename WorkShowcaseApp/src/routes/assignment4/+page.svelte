@@ -6,6 +6,7 @@
   let carRotation = false;
   let carSpeed = 0;
   let carColor = '#d68b09';
+  let pointLightColor = 'red';
 
   onMount(() => {
     const container = document.querySelector('#scene-container');
@@ -30,6 +31,11 @@
     world.setCarColor(carColor);
     world.render();
   }
+
+  $: if (world) {
+    world.setPointLightColor(pointLightColor);
+    world.render();
+  }
 </script>
 
 <h1>Hierarchical Scene & Transformations with Animation</h1>
@@ -51,6 +57,9 @@
 
       <label for="carColor" class="form-label mt-4">Car body color</label>
       <input type="color" class="form-control form-control-color" id="carColor" bind:value={carColor}>
+
+      <label for="pointLightColor" class="form-label mt-4">Point light color</label>
+      <input type="color" class="form-control form-control-color" id="pointLightColor" bind:value={pointLightColor}>
       </div>
 
       <div class="col-md-7">

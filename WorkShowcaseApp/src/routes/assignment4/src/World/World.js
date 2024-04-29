@@ -80,6 +80,10 @@ class World {
     let carBody = car.children[0]
     carBody.material.color.set(color);
   }
+
+  setPointLightColor(color) {
+    pointLight.color.set(color);
+  }
 }
 
 export { World };
