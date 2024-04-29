@@ -38,14 +38,18 @@
   <div class="row">
       <div class="col-md-2">
         <!-- User options go here -->
-        <button on:click={toggleCarRotation}>
-          {carRotation ? 'Stop' : 'Start'} car rotation
+      <h4 class="text-center mb-3">Controls</h4>
+
+      <hr>
+
+      <button on:click={toggleCarRotation}>
+        {carRotation ? 'Stop' : 'Start'} car rotation
       </button>
+      
+      <label for="carSpeedSlider" class="form-label mt-3">Car speed: {carSpeed}</label>
+      <input type="range" min="0" max="540" step="10" id="carSpeedSlider" bind:value={carSpeed} on:change={handleSpeedChange}/>
 
-      <p>Car speed: {carSpeed}</p>
-      <input type="range" min="0" max="540" step="10" bind:value={carSpeed} on:change={handleSpeedChange}/>
-
-      <label for="carColor" class="form-label">Car body color</label>
+      <label for="carColor" class="form-label mt-4">Car body color</label>
       <input type="color" class="form-control form-control-color" id="carColor" bind:value={carColor}>
       </div>
 
@@ -76,7 +80,7 @@
 <style>
   #scene-container {
     background-color: lightsteelblue;
-  }
+}
 
   button {
         width: 100%;
@@ -86,5 +90,5 @@
         color: white;
         background-color: blue;
         border: solid blue;
-    }
+}
 </style>
