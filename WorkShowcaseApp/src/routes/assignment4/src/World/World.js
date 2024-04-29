@@ -8,6 +8,8 @@ import { createRenderer } from './systems/renderer.js';
 import { Resizer } from './systems/Resizer.js';
 import { Loop } from './systems/Loop.js';
 
+import { MathUtils } from 'three';
+
 let scene;
 let camera;
 let renderer;
@@ -47,6 +49,15 @@ class World {
 
   stop() {
     loop.stop();
+  }
+
+  turnFrontTires(direction) {
+    if (direction === 'a') {
+      car.frontTireAngle = MathUtils.degToRad(20);
+    }
+    else if (direction === 'd') {
+      car.frontTireAngle = MathUtils.degToRad(-20);
+    }
   }
 }
 

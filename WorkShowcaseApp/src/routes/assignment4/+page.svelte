@@ -8,6 +8,9 @@
     const container = document.querySelector('#scene-container');
     world = new World(container);
     world.start();
+    document.addEventListener('keydown', (event) => {
+      world.turnFrontTires(event.key);
+    });
   });
 </script>
 
