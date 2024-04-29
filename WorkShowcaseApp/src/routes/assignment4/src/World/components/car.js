@@ -45,12 +45,12 @@ import { createTire } from './tire.js';
 
     car.frontTireAngle = MathUtils.degToRad(0);
     
-    const carRotationSpeed = MathUtils.degToRad(60);
+    car.rotationSpeed = 0;
   
     // this method will be called once per frame
     car.tick = (delta) => {
         // increase the cube's rotation each frame
-        car.rotation.y += carRotationSpeed * delta;
+        car.rotation.y += car.rotationSpeed * delta;
         tire1.rotation.y = car.frontTireAngle;
         tire2.rotation.y = car.frontTireAngle
         tire1.tick(delta);
