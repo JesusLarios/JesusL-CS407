@@ -43,9 +43,9 @@ import { createTire } from './tire.js';
     tire3.children[0].rotation.x = MathUtils.degToRad(270);
     tire4.children[0].rotation.x = MathUtils.degToRad(90);
 
-    car.frontTireAngle = MathUtils.degToRad(0);
-    
+    car.frontTireAngle = 0;
     car.rotationSpeed = 0;
+    car.tireSpeed = 0;
   
     // this method will be called once per frame
     car.tick = (delta) => {
@@ -53,6 +53,10 @@ import { createTire } from './tire.js';
         car.rotation.y += car.rotationSpeed * delta;
         tire1.rotation.y = car.frontTireAngle;
         tire2.rotation.y = car.frontTireAngle
+        tire1.rotationSpeed = -car.tireSpeed;
+        tire2.rotationSpeed = car.tireSpeed;
+        tire3.rotationSpeed = -car.tireSpeed;
+        tire4.rotationSpeed = car.tireSpeed;
         tire1.tick(delta);
         tire2.tick(delta);
         tire3.tick(delta);
