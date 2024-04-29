@@ -72,6 +72,11 @@ class World {
   setCarSpeed(speed) {
     car.tireSpeed = MathUtils.degToRad(speed);
   }
+
+  setCarColor(color) {
+    let carBody = car.children[0]
+    carBody.material.color.set(color);
+  }
 }
 
 export { World };

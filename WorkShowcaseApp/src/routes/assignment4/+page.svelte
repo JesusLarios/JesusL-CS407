@@ -5,6 +5,7 @@
   let world;
   let carRotation = false;
   let carSpeed = 0;
+  let carColor = 'FireBrick';
 
   onMount(() => {
     const container = document.querySelector('#scene-container');
@@ -24,6 +25,11 @@
   function handleSpeedChange() {
     world.setCarSpeed(carSpeed);
   }
+
+  $: if (world) {
+    world.setCarColor(carColor);
+    world.render();
+  }
 </script>
 
 <h1>Hierarchical Scene & Transformations with Animation</h1>
@@ -38,6 +44,9 @@
 
       <p>Car speed: {carSpeed}</p>
       <input type="range" min="0" max="540" step="10" bind:value={carSpeed} on:change={handleSpeedChange}/>
+
+      <label for="carColor" class="form-label">Car body color</label>
+      <input type="color" class="form-control form-control-color" id="carColor" bind:value={carColor}>
       </div>
 
       <div class="col-md-7">
