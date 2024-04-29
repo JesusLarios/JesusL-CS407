@@ -2,6 +2,7 @@ import { createCamera } from './components/camera.js';
 import { createCar } from './components/car.js';
 import { createLights } from './components/lights.js';
 import { createAmbientLights } from './components/ambientLights.js';
+import { createPointLights } from './components/pointLights.js';
 import { createScene } from './components/scene.js';
 
 import { createRenderer } from './systems/renderer.js';
@@ -18,6 +19,7 @@ let loop;
 let car;
 let light;
 let ambientLight;
+let pointLight;
 
 class World {
   constructor(container) {
@@ -30,10 +32,11 @@ class World {
     car = createCar();
     light = createLights();
     ambientLight = createAmbientLights();
+    pointLight = createPointLights();
 
     loop.updatables.push(car);
 
-    scene.add(light, ambientLight, car);
+    scene.add(light, ambientLight, pointLight, car);
 
     const resizer = new Resizer(container, camera, renderer);
   }
