@@ -4,6 +4,7 @@
 
   let world;
   let carRotation = false;
+  let carSpeed = 0;
 
   onMount(() => {
     const container = document.querySelector('#scene-container');
@@ -19,6 +20,10 @@
     carRotation = !carRotation;
     world.toggleCarRotation(carRotation);
   }
+
+  function handleSpeedChange() {
+    world.setCarSpeed(carSpeed);
+  }
 </script>
 
 <h1>Hierarchical Scene & Transformations with Animation</h1>
@@ -30,6 +35,9 @@
         <button on:click={toggleCarRotation}>
           {carRotation ? 'Stop' : 'Start'} car rotation
       </button>
+
+      <p>Car speed: {carSpeed}</p>
+      <input type="range" min="0" max="540" step="10" bind:value={carSpeed} on:change={handleSpeedChange}/>
       </div>
 
       <div class="col-md-7">
@@ -50,6 +58,8 @@
           <li>Place those child objects relative to the parent using transformations, at least one of which we create manually using vector or matrix algebra</li>
           <li>Have interactivity that moves both the entire object as well as the children</li>
         </ul>
+
+        <p>The tires can be controlled with "a" and "d" keyboard presses.</p>
       </div>
   </div>
 </div>

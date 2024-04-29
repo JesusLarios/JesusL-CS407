@@ -68,6 +68,10 @@ class World {
       car.rotationSpeed = 0;
     }
   }
+
+  setCarSpeed(speed) {
+    car.tireSpeed = MathUtils.degToRad(speed);
+  }
 }
 
 export { World };
