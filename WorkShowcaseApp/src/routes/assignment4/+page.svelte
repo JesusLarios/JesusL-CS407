@@ -110,7 +110,7 @@
           <li>Have interactivity that moves both the entire object as well as the children</li>
         </ul>
 
-        <p>The tires can be controlled with "a" and "d" keyboard presses.</p>
+        <p>The car can be controlled with "wasd" keys.</p>
       </div>
   </div>
 </div>
