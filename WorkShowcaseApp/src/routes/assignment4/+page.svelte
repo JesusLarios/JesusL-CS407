@@ -6,7 +6,7 @@
   let carRotation = false;
   let carSpeed = 0;
   let carColor = '#d68b09';
-  let pointLightColor = 'red';
+  let pointLightColor = '#e33505';
   let pointLightEnabled = true;
   let ambientLightEnabled = true;
 
