@@ -14,8 +14,18 @@
     const container = document.querySelector('#scene-container');
     world = new World(container);
     world.start();
+
     document.addEventListener('keydown', (event) => {
-      world.turnFrontTires(event.key);
+      world.turnCar(event.key);
+    });
+    document.addEventListener('keyup', (event) => {
+      world.stopTurningCar(event.key);
+    });
+    document.addEventListener('keypress', (event) => {
+      world.moveCar(event.key);
+    });
+    document.addEventListener('keyup', (event) => {
+      world.stopMovingCar(event.key);
     });
   });
 
@@ -25,7 +35,7 @@
   }
 
   function handleSpeedChange() {
-    world.setCarSpeed(carSpeed);
+    world.setCarTopSpeed(carSpeed);
   }
 
   function togglePointLight() {
@@ -61,8 +71,8 @@
           {carRotation ? 'Stop' : 'Start'} car rotation
         </button>
         
-        <label for="carSpeedSlider" class="form-label mt-3">Car speed: {carSpeed}</label>
-        <input type="range" min="0" max="540" step="10" id="carSpeedSlider" bind:value={carSpeed} on:change={handleSpeedChange}/>
+        <label for="carSpeedSlider" class="form-label mt-3">Top speed: {carSpeed}</label>
+        <input type="range" min="0" max="700" step="10" id="carSpeedSlider" bind:value={carSpeed} on:change={handleSpeedChange}/>
 
         <label for="carColor" class="form-label mt-4">Car body color</label>
         <input type="color" class="form-control form-control-color" id="carColor" bind:value={carColor}>
