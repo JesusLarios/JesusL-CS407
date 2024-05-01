@@ -5,73 +5,140 @@ import {
     MeshStandardMaterial,
 } from 'three';
 
-import { createTire } from './tire.js';
+import { createTire } from './carParts/tire.js'
+import { createBody } from './carParts/body.js'
   
   function createCar() {
     const geometry1 = new BoxGeometry(0, 0, 0);
     const material1 = new MeshStandardMaterial();
     const car = new Mesh(geometry1, material1);
 
-    const geometry2 = new BoxGeometry(35, 7, 15);
-    const material2 = new MeshStandardMaterial({ color: 'FireBrick' });
-    const body = new Mesh(geometry2, material2);
-
+    const body = createBody();
     car.add(body);
 
-    const geometry3 = new BoxGeometry(15, 7, 13);
-    const material3 = new MeshStandardMaterial({ color: 'white' });
-    const roof = new Mesh(geometry3, material3);
+    const frontLeftTire = createTire();
+    const frontRightTire = createTire();
+    const backLeftTire = createTire();
+    const backRightTire = createTire();
 
-    car.add(roof);
+    car.add(frontLeftTire, frontRightTire, backLeftTire, backRightTire);
+    frontLeftTire.position.set(-10, -3, 8);
+    frontRightTire.position.set(-10, -3, -8);
+    backLeftTire.position.set(10, -3, 8);
+    backRightTire.position.set(10, -3, -8);
 
-    roof.position.set(4, 5, 0);
+    // Rotate wheels to be vertical
+    frontLeftTire.children[0].rotation.x = MathUtils.degToRad(90);
+    frontRightTire.children[0].rotation.x = MathUtils.degToRad(270);
+    backLeftTire.children[0].rotation.x = MathUtils.degToRad(90);
+    backRightTire.children[0].rotation.x = MathUtils.degToRad(270);
 
-    const tire1 = createTire();
-    const tire2 = createTire();
-    const tire3 = createTire();
-    const tire4 = createTire();
+    car.SetBodyColor = (color) => {
+        let lowerBody = body.children[0];
+        lowerBody.material.color.set(color);
+    }
 
-    car.add(tire1, tire2, tire3, tire4);
+    let rotateCar = false;
 
-    tire1.position.set(-10, -3, -8);
-    tire2.position.set(-10, -3, 8);
-    tire3.position.set(10, -3, -8);
-    tire4.position.set(10, -3, 8);
+    car.toggleRotation = (rotate) => {
+        rotateCar = rotate;
+    }
 
-    tire1.children[0].rotation.x = MathUtils.degToRad(270);
-    tire2.children[0].rotation.x = MathUtils.degToRad(90);
-    tire3.children[0].rotation.x = MathUtils.degToRad(270);
-    tire4.children[0].rotation.x = MathUtils.degToRad(90);
+    // Turn settings
+    let turnSpeed = MathUtils.degToRad(80);
+    let turnAngle = MathUtils.degToRad(0);
+    let turnDirection = 'stop';
 
-    car.frontTireAngle = 0;
-    car.rotationSpeed = 0;
-    car.tireSpeed = 0;
-  
+    car.turn = (direction) => {
+        turnDirection = direction;
+    }
+
+    // Driving settings
+    let topSpeed = MathUtils.degToRad(0);
+    let currentSpeed = MathUtils.degToRad(0);
+    let acceleration = MathUtils.degToRad(150);
+    let driveDirection = 'stop';
+
+    car.drive = (direction) => {
+        driveDirection = direction;
+    }
+
+    car.setTopSpeed = (speed) => {
+        topSpeed = MathUtils.degToRad(speed);
+    }
+
     // this method will be called once per frame
     car.tick = (delta) => {
-        // increase the cube's rotation each frame
-        car.rotation.y += car.rotationSpeed * delta;
-        tire1.rotation.y = car.frontTireAngle;
-        tire2.rotation.y = car.frontTireAngle
-        tire1.rotationSpeed = -car.tireSpeed;
-        tire2.rotationSpeed = car.tireSpeed;
-        tire3.rotationSpeed = -car.tireSpeed;
-        tire4.rotationSpeed = car.tireSpeed;
-        tire1.tick(delta);
-        tire2.tick(delta);
-        tire3.tick(delta);
-        tire4.tick(delta);
+        if (turnDirection !== 'stop') {
+            if (turnDirection === 'left') {
+                turnAngle += turnSpeed * delta;
+            }
+            else if (turnDirection === 'right') {
+                turnAngle -= turnSpeed * delta;
+            }
+            
+            if (turnAngle > MathUtils.degToRad(23)) {
+                turnAngle = MathUtils.degToRad(23);
+            }
+            else if (turnAngle < MathUtils.degToRad(-23)) {
+                turnAngle = MathUtils.degToRad(-23);
+            }
+            frontLeftTire.rotation.y = turnAngle;
+            frontRightTire.rotation.y = turnAngle;
+        }
 
-        if (car.frontTireAngle > 0) {
-        car.frontTireAngle -= MathUtils.degToRad(.1);
+
+        if (driveDirection !== 'stop') {
+            if (driveDirection === 'forward') {
+                currentSpeed += acceleration * delta;
+            }
+            else if (driveDirection === 'backward') {
+                currentSpeed -= acceleration * delta;
+            }
+
+            if (currentSpeed > topSpeed) {
+                currentSpeed = topSpeed;
+            }
+            else if (currentSpeed < -topSpeed) {
+                currentSpeed = -topSpeed;
+            }
+            frontLeftTire.setRotationSpeed(currentSpeed);
+            frontRightTire.setRotationSpeed(-currentSpeed);
+            backLeftTire.setRotationSpeed(currentSpeed);
+            backRightTire.setRotationSpeed(-currentSpeed);
         }
-        else if (car.frontTireAngle < 0) {
-            car.frontTireAngle += MathUtils.degToRad(.1);
+        else
+        {
+            if (currentSpeed > 0) {
+                currentSpeed -= acceleration * delta;
+                if (currentSpeed < 0) {
+                    currentSpeed = 0;
+                }
+            }
+            else if (currentSpeed < 0) {
+                currentSpeed += acceleration * delta;
+                if (currentSpeed > 0) {
+                    currentSpeed = 0;
+                }
+            }
+            frontLeftTire.setRotationSpeed(currentSpeed);
+            frontRightTire.setRotationSpeed(-currentSpeed);
+            backLeftTire.setRotationSpeed(currentSpeed);
+            backRightTire.setRotationSpeed(-currentSpeed);
         }
+
+        if (rotateCar) {
+            car.rotation.y += MathUtils.degToRad(65) * delta;
+        }
+
+        frontLeftTire.tick(delta);
+        frontRightTire.tick(delta);
+        backLeftTire.tick(delta);
+        backRightTire.tick(delta);
     };
-  
+
     return car;
-  }
-  
-  export { createCar };
-  
+}
+
+export { createCar };
+
