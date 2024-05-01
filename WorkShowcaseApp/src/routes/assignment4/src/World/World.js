@@ -9,8 +9,6 @@ import { createRenderer } from './systems/renderer.js';
 import { Resizer } from './systems/Resizer.js';
 import { Loop } from './systems/Loop.js';
 
-import { MathUtils } from 'three';
-
 let scene;
 let camera;
 let renderer;
@@ -54,31 +52,46 @@ class World {
     loop.stop();
   }
 
-  turnFrontTires(direction) {
-    if (direction === 'a') {
-      car.frontTireAngle = MathUtils.degToRad(20);
+  turnCar(key) {
+    if (key === 'a') {
+      car.turn('left');
     }
-    else if (direction === 'd') {
-      car.frontTireAngle = MathUtils.degToRad(-20);
+    else if (key === 'd') {
+      car.turn('right');
+    }
+  }
+
+  stopTurningCar(key) {
+    if (key === 'a' || key === 'd') {
+      car.turn('stop');
+    }
+  }
+
+  moveCar(key) {
+    if (key === 'w') {
+      car.drive('forward');
+    }
+    else if (key === 's') {
+      car.drive('backward');
+    }
+  }
+
+  stopMovingCar(key) {
+    if (key === 'w' || key === 's') {
+      car.drive('stop');
     }
   }
 
   toggleCarRotation(rotate) {
-    if (rotate) {
-      car.rotationSpeed = MathUtils.degToRad(60);
-    }
-    else {
-      car.rotationSpeed = 0;
-    }
+    car.toggleRotation(rotate);
   }
 
-  setCarSpeed(speed) {
-    car.tireSpeed = MathUtils.degToRad(speed);
+  setCarTopSpeed(speed) {
+    car.setTopSpeed(speed);
   }
 
   setCarColor(color) {
-    let carBody = car.children[0]
-    carBody.material.color.set(color);
+    car.SetBodyColor(color);
   }
 
   setPointLightColor(color) {
