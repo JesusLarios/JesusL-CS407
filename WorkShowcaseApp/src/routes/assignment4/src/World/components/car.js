@@ -3,12 +3,19 @@ import {
     MathUtils,
     Mesh,
     MeshStandardMaterial,
+    Vector3,
 } from 'three';
 
 import { createTire } from './carParts/tire.js'
 import { createBody } from './carParts/body.js'
+
+function applyVectorsToTire(tire, v1, v2, v3) {
+    tire.position.add(v1);
+    tire.position.add(v2);
+    tire.position.add(v3);
+}
   
-  function createCar() {
+function createCar() {
     const geometry1 = new BoxGeometry(0, 0, 0);
     const material1 = new MeshStandardMaterial();
     const car = new Mesh(geometry1, material1);
@@ -20,18 +27,31 @@ import { createBody } from './carParts/body.js'
     const frontRightTire = createTire();
     const backLeftTire = createTire();
     const backRightTire = createTire();
-
     car.add(frontLeftTire, frontRightTire, backLeftTire, backRightTire);
-    frontLeftTire.position.set(-10, -3, 8);
-    frontRightTire.position.set(-10, -3, -8);
-    backLeftTire.position.set(10, -3, 8);
-    backRightTire.position.set(10, -3, -8);
+
+    let v1;
+    let v2;
+    let v3;
+
+    v1 = new Vector3(-8, 0, 0);
+    v2 = new Vector3(0, -3, 0);
+    v3 = new Vector3(0, 0, -10);
+    applyVectorsToTire(frontLeftTire, v1, v2, v3);
+
+    v1 = new Vector3(8, 0, 0);
+    applyVectorsToTire(frontRightTire, v1, v2, v3);
+
+    v3 = new Vector3(0, 0, 10);
+    applyVectorsToTire(backRightTire, v1, v2, v3);
+
+    v1 = new Vector3(-8, 0, 0);
+    applyVectorsToTire(backLeftTire, v1, v2, v3);
 
     // Rotate wheels to be vertical
-    frontLeftTire.children[0].rotation.x = MathUtils.degToRad(90);
-    frontRightTire.children[0].rotation.x = MathUtils.degToRad(270);
-    backLeftTire.children[0].rotation.x = MathUtils.degToRad(90);
-    backRightTire.children[0].rotation.x = MathUtils.degToRad(270);
+    frontLeftTire.rotation.z = MathUtils.degToRad(90);
+    frontRightTire.rotation.z = MathUtils.degToRad(270);
+    backLeftTire.rotation.z = MathUtils.degToRad(90);
+    backRightTire.rotation.z = MathUtils.degToRad(270);
 
     car.SetBodyColor = (color) => {
         let lowerBody = body.children[0];
