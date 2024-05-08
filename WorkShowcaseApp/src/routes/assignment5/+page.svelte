@@ -4,6 +4,7 @@
 
   let world;
   let animation = false;
+  let wireframe = false;
   let pointLight = true;
   let ambientLight = true;
 
@@ -16,6 +17,11 @@
   function toggleAnimation() {
     animation = !animation;
     world.toggleAnimation(animation);
+  }
+
+  function toggleWireframe() {
+    wireframe = !wireframe;
+    world.toggleWireframe(wireframe);
   }
 
   function togglePointLight() {
@@ -39,6 +45,10 @@
 
         <button on:click={toggleAnimation}>
           {animation ? 'Stop' : 'Start'} animation
+        </button>
+
+        <button on:click={toggleWireframe}>
+          {wireframe ? 'Show' : 'Hide'} wireframe
         </button>
 
         <div class="form-check form-switch">
