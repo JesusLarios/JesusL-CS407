@@ -3,6 +3,7 @@ import {
     BufferAttribute,
     Mesh,
     MeshStandardMaterial,
+    MathUtils,
 } from 'three';
 
 function generateVertices() {
@@ -124,9 +125,22 @@ function createDiamond() {
     const material1 = new MeshStandardMaterial( { color: 0xffffff, vertexColors: true} );
     const diamond = new Mesh(geometry1, material1);
 
+    diamond.rotationSpeed = MathUtils.degToRad(0);
+
+    diamond.toggleAnimation = (enabled) => {
+        if (enabled) {
+            diamond.rotationSpeed = MathUtils.degToRad(100);
+        }
+        else {
+            diamond.rotationSpeed = 0;
+        }
+        
+    };
 
     // this method will be called once per frame
     diamond.tick = (delta) => {
+        // increase the cube's rotation each frame
+        diamond.rotation.z += diamond.rotationSpeed * delta;
     };
 
     diamond.setWireframe = (enabled) => {
