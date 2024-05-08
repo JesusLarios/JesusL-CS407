@@ -5,53 +5,7 @@ import {
     MeshStandardMaterial,
 } from 'three';
 
-/*
 function generateVertices() {
-    const vertices = new Float32Array([
-        -1.0, -1.0,  1.0, // v0
-         1.0, -1.0,  1.0, // v1
-         1.0,  1.0,  1.0, // v2
-        -1.0,  1.0,  1.0, // v3
-    ]);
-    return vertices;
-}
-
-function generateIndicies() {
-    const indices = [
-        0, 1, 2,
-        2, 3, 0,
-    ];
-    return indices;
-}
-  
-function createDiamond() {
-    const geometry1 = new BufferGeometry();
-    const indices = generateIndicies();
-    const vertices = generateVertices();
-    geometry1.setIndex(indices);
-    geometry1.setAttribute( 'position', new BufferAttribute(vertices, 3));
-    //const material1 = new MeshStandardMaterial();
-    const material1 = new MeshBasicMaterial( { color: 0xff0000 } );
-    const diamond = new Mesh(geometry1, material1);
-
-    // this method will be called once per frame
-    diamond.tick = (delta) => {
-    };
-
-    return diamond;
-}
-*/
-
-
-function generateVertices() {
-    /*
-    const vertices = new Float32Array([
-        -1, -1,  1, // v0
-        1, -1,  1, // v1
-        1,  1,  1, // v2
-        -1,  1,  1, // v3
-    ]);
-    */
     const r1 = 1;
     const i = r1*(Math.sqrt(3)/2);
 
