@@ -56,7 +56,7 @@ class World {
   }
 
   toggleAnimation(enabled) {
-    //diamond.toggleAnimation(enabled);
+    diamond.toggleAnimation(enabled);
   }
 
   toggleWireframe(enabled) {
