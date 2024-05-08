@@ -59,6 +59,10 @@ class World {
     //diamond.toggleAnimation(enabled);
   }
 
+  toggleWireframe(enabled) {
+    diamond.seteWireframe(enabled);
+  }
+
   togglePointLight(enabled) {
     if (enabled)
       pointLight.intensity = 20000;
