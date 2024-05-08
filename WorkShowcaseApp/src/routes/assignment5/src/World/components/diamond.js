@@ -86,19 +86,28 @@ function generateIndicies() {
 
 function generateColors() {
     const colors = new Float32Array([
-        255, 255, 0, // 0
-        0, 255, 0, // 1
-        0, 0, 255, // 2
-        50, 50, 255, // 3
+        0, 0, 255,   
+        0, 0, 255,     
+        0, 0, 255,    
+        0, 0, 255,   
+        0, 0, 255, 
+        0, 0, 255,   
+
+        255, 165, 0,   
+        128, 0, 255,   
+        255, 165, 0,   
+        128, 0, 255, 
+        255, 165, 0, 
+        128, 0, 255,
+        255, 165, 0,   
+        128, 0, 255,   
+        255, 165, 0,  
+        128, 0, 255,   
+        255, 165, 0,   
+        128, 0, 255, 
+
+        0, 0, 0 
     ]);
-    /*
-    const colors = new Float32Array([
-        1, 0, 0, // v0
-        0, 1, 0, // v1
-        0, 0, 1, // v2
-        1, 1, 1, // v3
-    ]);
-    */
     return colors.map((color) => color / 255);
 }
 
@@ -107,13 +116,12 @@ function createDiamond() {
     const geometry1 = new BufferGeometry();
     const indices = generateIndicies();
     const vertices = new Float32Array(generateVertices());
-    //const colors = new Float32Array(generateColors());
+    const colors = new Float32Array(generateColors());
     geometry1.setIndex(indices);
     geometry1.setAttribute( 'position', new BufferAttribute(vertices, 3));
-    //geometry1.setAttribute( 'color', new BufferAttribute(colors, 3));
+    geometry1.setAttribute( 'color', new BufferAttribute(colors, 3));
 
-    //const material1 = new MeshStandardMaterial( { color: 0xff0000, vertexColors: true} );
-    const material1 = new MeshStandardMaterial( { color: 0xff0000} );
+    const material1 = new MeshStandardMaterial( { color: 0xffffff, vertexColors: true} );
     const diamond = new Mesh(geometry1, material1);
 
 
