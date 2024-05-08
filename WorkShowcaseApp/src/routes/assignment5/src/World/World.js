@@ -5,6 +5,7 @@ import { createAmbientLights } from './components/ambientLights.js';
 import { createPointLights } from './components/pointLights.js';
 import { createScene } from './components/scene.js';
 
+import { createControls } from './systems/controls.js';
 import { createRenderer } from './systems/renderer.js';
 import { Resizer } from './systems/Resizer.js';
 import { Loop } from './systems/Loop.js';
@@ -27,12 +28,14 @@ class World {
     loop = new Loop(camera, scene, renderer);
     container.append(renderer.domElement);
 
+    const controls = createControls(camera, renderer.domElement);
+
     diamond = createDiamond();
     light = createLights();
     ambientLight = createAmbientLights();
     pointLight = createPointLights();
 
-    loop.updatables.push(diamond);
+    loop.updatables.push(controls, diamond);
 
     scene.add(light, ambientLight, pointLight, diamond);
 
