@@ -60,7 +60,7 @@ class World {
   }
 
   toggleWireframe(enabled) {
-    diamond.seteWireframe(enabled);
+    diamond.setWireframe(enabled);
   }
 
   togglePointLight(enabled) {
@@ -72,7 +72,7 @@ class World {
 
   toggleAmbientLight(enabled) {
     if (enabled)
-      ambientLight.intensity = 20;
+      ambientLight.intensity = 1.5;
     else
       ambientLight.intensity = 0;
   }
