@@ -1,8 +1,6 @@
 import { createCamera } from './components/camera.js';
 import { createDiamond } from './components/diamond.js';
 import { createLights } from './components/lights.js';
-import { createAmbientLights } from './components/ambientLights.js';
-import { createPointLights } from './components/pointLights.js';
 import { createScene } from './components/scene.js';
 
 import { createControls } from './systems/controls.js';
@@ -16,7 +14,7 @@ let renderer;
 let loop;
 
 let diamond;
-let light;
+let directionalLight;
 let ambientLight;
 let pointLight;
 
@@ -31,13 +29,11 @@ class World {
     const controls = createControls(camera, renderer.domElement);
 
     diamond = createDiamond();
-    light = createLights();
-    ambientLight = createAmbientLights();
-    pointLight = createPointLights();
-
+    ({directionalLight, ambientLight, pointLight} = createLights());
+    
     loop.updatables.push(controls, diamond);
 
-    scene.add(light, ambientLight, pointLight, diamond);
+    scene.add(directionalLight, ambientLight, pointLight, diamond);
 
     const resizer = new Resizer(container, camera, renderer);
   }
