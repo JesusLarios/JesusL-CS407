@@ -2,7 +2,7 @@ import {
     BufferGeometry,
     BufferAttribute,
     Mesh,
-    MeshStandardMaterial,
+    MeshPhongMaterial,
     MathUtils,
 } from 'three';
 
@@ -87,27 +87,27 @@ function generateIndicies() {
 
 function generateColors() {
     const colors = new Float32Array([
-        0, 0, 255,   
-        0, 0, 255,     
-        0, 0, 255,    
-        0, 0, 255,   
-        0, 0, 255, 
-        0, 0, 255,   
+        0, 0, 255, // 0 
+        0, 0, 255, // 1    
+        0, 0, 255, // 2    
+        0, 0, 255, // 3   
+        0, 0, 255, // 4 
+        0, 0, 255, // 5   
 
-        255, 165, 0,   
-        128, 0, 255,   
-        255, 165, 0,   
-        128, 0, 255, 
-        255, 165, 0, 
-        128, 0, 255,
-        255, 165, 0,   
-        128, 0, 255,   
-        255, 165, 0,  
-        128, 0, 255,   
-        255, 165, 0,   
-        128, 0, 255, 
+        3, 248, 252, // 6   
+        128, 0, 255, // 7   
+        255, 165, 0, // 8   
+        128, 0, 255, // 9 
+        255, 165, 0, // 10 
+        128, 0, 255, // 11
+        255, 165, 0, // 12   
+        128, 0, 255, // 13   
+        255, 165, 0, // 14  
+        128, 0, 255, // 15   
+        255, 165, 0, // 16   
+        128, 0, 255, // 17 
 
-        0, 0, 0 
+        0, 0, 0, // 18
     ]);
     return colors.map((color) => color / 255);
 }
@@ -121,8 +121,9 @@ function createDiamond() {
     geometry1.setIndex(indices);
     geometry1.setAttribute( 'position', new BufferAttribute(vertices, 3));
     geometry1.setAttribute( 'color', new BufferAttribute(colors, 3));
+    geometry1.computeVertexNormals();
 
-    const material1 = new MeshStandardMaterial( { color: 0xffffff, vertexColors: true} );
+    const material1 = new MeshPhongMaterial( { color: 0xffffff, vertexColors: true} );
     const diamond = new Mesh(geometry1, material1);
 
     diamond.rotationSpeed = MathUtils.degToRad(0);
