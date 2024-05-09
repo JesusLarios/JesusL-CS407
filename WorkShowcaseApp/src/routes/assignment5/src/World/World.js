@@ -65,14 +65,14 @@ class World {
 
   togglePointLight(enabled) {
     if (enabled)
-      pointLight.intensity = 1000;
+      pointLight.intensity = 3000;
     else
       pointLight.intensity = 0;
   }
 
   toggleAmbientLight(enabled) {
     if (enabled)
-      ambientLight.intensity = 4;
+      ambientLight.intensity = 3;
     else
       ambientLight.intensity = 0;
   }
