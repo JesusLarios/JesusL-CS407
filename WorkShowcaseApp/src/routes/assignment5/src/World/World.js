@@ -52,7 +52,7 @@ class World {
   }
 
   toggleAnimation(enabled) {
-    diamond.toggleAnimation(enabled);
+    diamond.setAnimation(enabled);
   }
 
   toggleWireframe(enabled) {
@@ -60,17 +60,11 @@ class World {
   }
 
   togglePointLight(enabled) {
-    if (enabled)
-      pointLight.intensity = 3000;
-    else
-      pointLight.intensity = 0;
+    pointLight.visible = enabled;
   }
 
   toggleAmbientLight(enabled) {
-    if (enabled)
-      ambientLight.intensity = 3;
-    else
-      ambientLight.intensity = 0;
+    ambientLight.visible = enabled;
   }
 }
 
