@@ -2,6 +2,7 @@ import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js';
 
 function createControls(camera, canvas) {
     const controls = new OrbitControls(camera, canvas);
+    controls.target.set(0, 0, -1.5);
 
     // damping and auto rotation require
     // the controls to be updated each frame
