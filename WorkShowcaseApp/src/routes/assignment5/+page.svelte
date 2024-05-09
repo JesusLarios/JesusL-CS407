@@ -48,7 +48,7 @@
         </button>
 
         <button on:click={toggleWireframe}>
-          {wireframe ? 'Show' : 'Hide'} wireframe
+          {wireframe ? 'Hide' : 'Show'} wireframe
         </button>
 
         <div class="form-check form-switch">
