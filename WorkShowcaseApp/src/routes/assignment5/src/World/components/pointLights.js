@@ -1,9 +1,9 @@
 import { PointLight } from 'three';
 
 function createPointLights() {
-    const light = new PointLight(0x00CED1, 20000, 100);
+    const light = new PointLight(0xff00ff, 1000, 200);
 
-    light.position.set(0, 5, 5);
+    light.position.set(-10, 10, -10);
 
     return light;
 }
