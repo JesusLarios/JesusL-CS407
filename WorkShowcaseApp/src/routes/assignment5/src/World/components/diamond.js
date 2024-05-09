@@ -128,7 +128,7 @@ function createDiamond() {
 
     diamond.rotationSpeed = MathUtils.degToRad(0);
 
-    diamond.toggleAnimation = (enabled) => {
+    diamond.setAnimation = (enabled) => {
         if (enabled) {
             diamond.rotationSpeed = MathUtils.degToRad(100);
         }
