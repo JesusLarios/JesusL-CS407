@@ -5,4 +5,4 @@ function createAxesHelper() {
   return helper;
 }
 
-export { createAxesHelper, createGridHelper };
+export { createAxesHelper };
