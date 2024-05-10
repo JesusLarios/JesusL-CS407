@@ -1,4 +1,5 @@
 import { createCamera } from './components/camera.js';
+import { createAxesHelper } from './systems/helpers.js';
 import { createDiamond } from './components/diamond.js';
 import { createLights } from './components/lights.js';
 import { createScene } from './components/scene.js';
@@ -36,6 +37,8 @@ class World {
     scene.add(directionalLight, ambientLight, pointLight, diamond);
 
     const resizer = new Resizer(container, camera, renderer);
+
+    scene.add(createAxesHelper(), createGridHelper());
   }
 
   render() {
