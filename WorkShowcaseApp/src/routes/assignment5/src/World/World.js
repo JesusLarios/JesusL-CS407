@@ -38,7 +38,7 @@ class World {
 
     const resizer = new Resizer(container, camera, renderer);
 
-    scene.add(createAxesHelper(), createGridHelper());
+    scene.add(createAxesHelper());
   }
 
   render() {
