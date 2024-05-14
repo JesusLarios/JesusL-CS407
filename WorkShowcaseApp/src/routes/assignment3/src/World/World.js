@@ -39,8 +39,8 @@ class World {
     renderer.render(scene, camera);
   }
 
-  toggleCapsuleReflection(showCapsuleReflection) {
-    if (showCapsuleReflection)
+  setCapsuleShine(shine) {
+    if (shine)
     {
       capsule.material.shininess = 90;
     }
