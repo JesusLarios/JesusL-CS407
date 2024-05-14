@@ -3,8 +3,8 @@
   import { World } from './src/World/World.js'
 
   let world;
-  let reflectionToggle = true;
-  let pointLightcolor = 'red';
+  let shine = true;
+  let pointLightColor = '#ff0000';
 
   onMount(() => {
     const container = document.querySelector('#scene-container');
@@ -13,12 +13,12 @@
   });
 
   $: if (world) {
-    world.toggleCapsuleReflection(reflectionToggle);
+    world.setCapsuleShine(shine);
     world.render();
   }
 
   $: if (world) {
-    world.setPointLightColor(pointLightcolor);
+    world.setPointLightColor(pointLightColor);
     world.render();
   }
 </script>
@@ -28,13 +28,17 @@
 <div class="container mt-5">
   <div class="row">
       <div class="col-md-2">
-        <label>
-          <input type="checkbox" bind:checked={reflectionToggle}>
-          Toggle capsule reflection
-        </label>
+        <h4 class="text-center mb-3">Controls</h4>
 
-        <label for="pointColor" class="form-label">Point light color</label>
-        <input type="color" class="form-control form-control-color" id="pointColor" bind:value={pointLightcolor}>
+        <hr>
+
+        <div class="form-check form-switch">
+          <label class="form-check-label" for="toggleCapsuleShine">Capsule shine</label>
+          <input class="form-check-input" type="checkbox" role="switch" id="toggleCapsuleShine" bind:checked={shine}>
+        </div>
+
+        <label for="pointColor" class="form-label mt-5">Point light color</label>
+        <input type="color" class="form-control form-control-color" id="pointColor" bind:value={pointLightColor}>
       </div>
 
       <div class="col-md-7">
