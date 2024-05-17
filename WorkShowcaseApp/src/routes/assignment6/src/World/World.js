@@ -39,7 +39,6 @@ class World {
   }
 
   async init() {
-    await loadBirds();
     const { parrot, flamingo, stork } = await loadBirds();
 
     controls.target.copy(parrot.position);
