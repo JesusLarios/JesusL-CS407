@@ -38,7 +38,7 @@
   }
 </script>
 
-<h1>Custom Geometry with Per-Vertex Colors & Camera Controls</h1>
+<h1>Load a pre-build 3D model and use an animation</h1>
 
 <div class="container mt-5">
   <div class="row">
@@ -74,14 +74,14 @@
       </div>
 
       <div class="col-md-3">
-        <p>The goal of this assignment is to learn how geometries are organized, represented and delivered to OpenGL and the graphics card.</p>
+        <p>The goal of this assignment is to learn about pre-made models and animations.</p>
 
         <p>Requirements are:</p>
       
         <ul>
-          <li>Construct a custom geometry object manually by specifying vertices and faces in an indexed buffer geometry</li>
-          <li>Use per-vertex colors so we can pass custom attribute data to the vertex shader</li>
-          <li>Implement orbit and optionally camera navigation through the scene</li>
+          <li>Load a pre-made model from a GLTF file, that contains one or more geometries with materials and animation clips.</li>
+          <li>Use the three.js animation system</li>
+          <li>Exercise both of these with some form of interactive control.</li>
         </ul>
 
         <p>More explanation of controls here.</p>
