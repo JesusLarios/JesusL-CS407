@@ -8,7 +8,7 @@ async function loadHelicopter() {
   const heliData = await loader.loadAsync('./models/Helicopter.glb');
 
   const helicopter = setupModel(heliData);
-  helicopter.position.set(0, 0, -5);
+  helicopter.position.set(0, 2, 0);
   helicopter.scale.set(0.05, 0.05, 0.05);
   helicopter.rotation.z = Math.PI;
 
