@@ -1,4 +1,4 @@
-import { loadBirds } from './components/brids/brids.js';
+import { loadHelicopter } from './components/helicopter/helicopter.js';
 import { createCamera } from './components/camera.js';
 import { createAxesHelper } from './systems/helpers.js';
 import { createLights } from './components/lights.js';
@@ -18,6 +18,8 @@ let loop;
 let directionalLight;
 let ambientLight;
 let pointLight;
+
+let helicopter;
 
 class World {
   constructor(container) {
@@ -39,12 +41,12 @@ class World {
   }
 
   async init() {
-    const { parrot, flamingo, stork } = await loadBirds();
+    helicopter = await loadHelicopter();
 
-    controls.target.copy(parrot.position);
+    controls.target.copy(helicopter.position);
 
-    loop.updatables.push(parrot, flamingo, stork);
-    scene.add(parrot, flamingo, stork);
+    loop.updatables.push(helicopter);
+    scene.add(helicopter);
   }
 
   render() {
@@ -59,7 +61,7 @@ class World {
   stop() {
     loop.stop();
   }
-
+  
   toggleAnimation(enabled) {
     //diamond.setAnimation(enabled);
   }
