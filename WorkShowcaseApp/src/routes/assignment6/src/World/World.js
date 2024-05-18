@@ -61,6 +61,18 @@ class World {
   stop() {
     loop.stop();
   }
+
+  driveForward() {
+    helicopter.drive('forward');
+  }
+
+  driveBackward() {
+    helicopter.drive('backward');
+  }
+
+  stopDriving() {
+    helicopter.drive('stop');
+  }
   
   toggleAnimation(enabled) {
     //diamond.setAnimation(enabled);
