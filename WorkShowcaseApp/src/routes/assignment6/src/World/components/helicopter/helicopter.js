@@ -10,6 +10,7 @@ async function loadHelicopter() {
   const helicopter = setupModel(heliData);
   helicopter.position.set(0, 0, -5);
   helicopter.scale.set(0.05, 0.05, 0.05);
+  helicopter.rotation.z = Math.PI;
 
   return helicopter;
 }
