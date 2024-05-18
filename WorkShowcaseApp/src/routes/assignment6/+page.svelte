@@ -29,6 +29,12 @@
           case 'd':
             world.turnRight();
             break;
+          case 'ArrowUp':
+            world.liftUp();
+            break;
+          case 'ArrowDown':
+            world.liftDown();
+            break;
           default:
             break;
         }
@@ -43,6 +49,10 @@
           case 'a':
           case 'd':
             world.stopTurning();
+            break;
+          case 'ArrowUp':
+          case 'ArrowDown':
+            world.stopLifting();
             break;
           default:
             break;
