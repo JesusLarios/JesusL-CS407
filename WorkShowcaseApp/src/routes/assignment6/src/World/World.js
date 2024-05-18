@@ -2,6 +2,7 @@ import { loadHelicopter } from './components/helicopter/helicopter.js';
 import { createCamera } from './components/camera.js';
 import { createAxesHelper } from './systems/helpers.js';
 import { createLights } from './components/lights.js';
+import { createPlane } from './components/plane.js';
 import { createScene } from './components/scene.js';
 
 import { createControls } from './systems/controls.js';
@@ -31,9 +32,11 @@ class World {
     controls = createControls(camera, renderer.domElement);
 
     ({directionalLight, ambientLight, pointLight} = createLights());
+
+    const plane = createPlane();
     
     loop.updatables.push(controls);
-    scene.add(directionalLight, ambientLight, pointLight);
+    scene.add(directionalLight, ambientLight, pointLight, plane);
 
     const resizer = new Resizer(container, camera, renderer);
 
