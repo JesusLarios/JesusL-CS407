@@ -64,6 +64,7 @@ class World {
 
   driveForward() {
     helicopter.drive('forward');
+    //controls.target.copy(helicopter.position);
   }
 
   driveBackward() {
@@ -72,6 +73,30 @@ class World {
 
   stopDriving() {
     helicopter.drive('stop');
+  }
+
+  turnLeft() {
+    helicopter.turn('left');
+  }
+
+  turnRight() {
+    helicopter.turn('right');
+  }
+
+  stopTurning() {
+    helicopter.turn('stop');
+  }
+
+  liftUp() {
+    helicopter.lift('up');
+  }
+
+  liftDown() {
+    helicopter.lift('down');
+  }
+
+  stopLifting() {
+    helicopter.lift('stop');
   }
   
   toggleAnimation(enabled) {
