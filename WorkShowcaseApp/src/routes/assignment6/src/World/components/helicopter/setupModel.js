@@ -22,7 +22,7 @@ function setupModel(data) {
 
         const forwardDirection = new Vector3(0, 1, 0).applyQuaternion(model.quaternion);
 
-        if (driveDirection !== 'stop') {
+        if (driveDirection !== 'stop' && model.position.y > 2) {
             if (driveDirection === 'forward') {
                 model.position.add(forwardDirection.clone().multiplyScalar(-driveSpeed * delta));
             } else if (driveDirection === 'backward') {
@@ -30,7 +30,7 @@ function setupModel(data) {
             }
         }
 
-        if (turnDirection !== 'stop') {
+        if (turnDirection !== 'stop' && model.position.y > 2) {
             if (turnDirection === 'left') {
                 model.rotation.z += turnSpeed * delta;
             }
@@ -43,9 +43,19 @@ function setupModel(data) {
             if (liftDirection === 'up') {
                 model.position.y += liftSpeed * delta;
             }
-            else if (liftDirection === 'down') {
+            else if (liftDirection === 'down' && model.position.y > 2) {
                 model.position.y -= liftSpeed * delta;
+                if (model.position.y < 2) {
+                    model.position.y = 2;
+                }
             }
+        }
+
+        if (model.position.y === 2) {
+            action.stop();
+        }
+        else {
+            action.play();
         }
     }
 
