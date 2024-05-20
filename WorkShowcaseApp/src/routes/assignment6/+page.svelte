@@ -7,6 +7,7 @@
   let wireframe = false;
   let pointLight = true;
   let ambientLight = true;
+  let arcadeMode = false;
 
   onMount(async () => {
     try {
@@ -80,6 +81,10 @@
   function toggleAmbientLight() {
     world.toggleAmbientLight(ambientLight);
   }
+
+  function toggleArcadeMode() {
+    world.toggleArcadeMode(arcadeMode);
+  }
 </script>
 
 <h1>Load a pre-build 3D model and use an animation</h1>
@@ -108,6 +113,11 @@
         <div class="form-check form-switch">
           <label class="form-check-label" for="ambientLightToggle">Ambient light</label>
           <input class="form-check-input" type="checkbox" role="switch" id="ambientLightToggle" bind:checked={ambientLight} on:change={toggleAmbientLight}>
+        </div>
+
+        <div class="form-check form-switch">
+          <label class="form-check-label" for="arcadeModeToggle">Arcade mode</label>
+          <input class="form-check-input" type="checkbox" role="switch" id="arcadeModeToggle" bind:checked={arcadeMode} on:change={toggleArcadeMode}>
         </div>
       </div>
 

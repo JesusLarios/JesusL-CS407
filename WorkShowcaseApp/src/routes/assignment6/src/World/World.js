@@ -117,6 +117,10 @@ class World {
   toggleAmbientLight(enabled) {
     ambientLight.visible = enabled;
   }
+
+  toggleArcadeMode(enabled) {
+    helicopter.setArcadeMode(enabled);
+  }
 }
 
 export { World };
