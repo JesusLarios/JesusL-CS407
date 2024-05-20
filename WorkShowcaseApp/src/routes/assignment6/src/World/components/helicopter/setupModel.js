@@ -70,6 +70,19 @@ function setupModel(data) {
     model.lift = (direction) => {
         liftDirection = direction;
     }
+    
+    model.setArcadeMode = (value) => {
+        if (value) {
+            driveSpeed = 8 * 3;
+            turnSpeed = Math.PI/360 * 90 * 3;
+            liftSpeed = 3 * 3;
+        }
+        else {
+            driveSpeed = 8;
+            turnSpeed = Math.PI/360 * 90;
+            liftSpeed = 3;
+        }
+    }
 
     return model;
     }
