@@ -1,4 +1,3 @@
-import { loadHelicopter } from './components/helicopter/helicopter.js';
 import { loadHelicopters } from './components/helicopters/helicopters.js';
 import { createCamera } from './components/camera.js';
 import { createAxesHelper } from './systems/helpers.js';
