@@ -1,4 +1,6 @@
 import { loadHelicopters } from './components/helicopters/helicopters.js';
+import { loadRadar } from './components/radar/radar.js';
+import { loadTurret } from './components/Turret/turret.js';
 import { createCamera } from './components/camera.js';
 import { createAxesHelper } from './systems/helpers.js';
 import { createLights } from './components/lights.js';
@@ -57,7 +59,14 @@ class World {
     controls.target.copy(heli1.position);
 
     loop.updatables.push(heli1, heli2, heli3, heli4);
-    scene.add(heli1, heli2, heli3, heli4);
+
+    const radarModel = await loadRadar();
+    loop.updatables.push(radarModel);
+
+    const turretModel = await loadTurret();
+    loop.updatables.push(turretModel);
+
+    scene.add(heli1, heli2, heli3, heli4, radarModel, turretModel);
   }
 
   render() {
