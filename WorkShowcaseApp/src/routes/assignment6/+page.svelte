@@ -8,6 +8,7 @@
   let pointLight = true;
   let ambientLight = true;
   let arcadeMode = false;
+  let currentHelicopter = "1";
 
   onMount(async () => {
     try {
@@ -85,6 +86,10 @@
   function toggleArcadeMode() {
     world.toggleArcadeMode(arcadeMode);
   }
+
+  function selectHelicopter(event) {
+    world.switchHelicopter(currentHelicopter);
+  }
 </script>
 
 <h1>Load a pre-build 3D model and use an animation</h1>
@@ -105,9 +110,9 @@
           {wireframe ? 'Hide' : 'Show'} wireframe
         </button>
 
-        <div class="form-check form-switch">
-          <label class="form-check-label mt-5" for="pointLightToggle">Point light</label>
-          <input class="form-check-input mt-5" type="checkbox" role="switch" id="pointLightToggle" bind:checked={pointLight} on:change={togglePointLight}>
+        <div class="form-check form-switch mt-5">
+          <label class="form-check-label" for="pointLightToggle">Point light</label>
+          <input class="form-check-input" type="checkbox" role="switch" id="pointLightToggle" bind:checked={pointLight} on:change={togglePointLight}>
         </div>
 
         <div class="form-check form-switch">
@@ -118,6 +123,25 @@
         <div class="form-check form-switch">
           <label class="form-check-label" for="arcadeModeToggle">Arcade mode</label>
           <input class="form-check-input" type="checkbox" role="switch" id="arcadeModeToggle" bind:checked={arcadeMode} on:change={toggleArcadeMode}>
+        </div>
+
+        <div class="form-check mt-5">
+          <div>
+            <input class="form-check-input" type="radio" id="helicopter1" name="helicopter" value="1" bind:group={currentHelicopter} on:change={selectHelicopter}>
+            <label class="form-check-label" for="helicopter1">Helicopter 1</label>
+          </div>
+          <div>
+            <input class="form-check-input" type="radio" id="helicopter2" name="helicopter" value="2" bind:group={currentHelicopter} on:change={selectHelicopter}>
+            <label class="form-check-label" for="helicopter2">Helicopter 2</label>
+          </div>
+          <div>
+            <input class="form-check-input" type="radio" id="helicopter3" name="helicopter" value="3" bind:group={currentHelicopter} on:change={selectHelicopter}>
+            <label class="form-check-label" for="helicopter3">Helicopter 3</label>
+          </div>
+          <div>
+            <input class="form-check-input" type="radio" id="helicopter4" name="helicopter" value="4" bind:group={currentHelicopter} on:change={selectHelicopter}>
+            <label class="form-check-label" for="helicopter4">Helicopter 4</label>
+          </div>
         </div>
       </div>
 
