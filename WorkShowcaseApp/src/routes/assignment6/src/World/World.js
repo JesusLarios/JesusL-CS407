@@ -24,6 +24,8 @@ let pointLight;
 
 let helicopter;
 let helicopters = [];
+let turret;
+let radar;
 
 class World {
   constructor(container) {
@@ -61,9 +63,11 @@ class World {
     loop.updatables.push(heli1, heli2, heli3, heli4);
 
     const radarModel = await loadRadar();
+    radar = radarModel;
     loop.updatables.push(radarModel);
 
     const turretModel = await loadTurret();
+    turret = turretModel;
     loop.updatables.push(turretModel);
 
     scene.add(heli1, heli2, heli3, heli4, radarModel, turretModel);
@@ -127,7 +131,8 @@ class World {
   }
   
   toggleAnimation(enabled) {
-    //diamond.setAnimation(enabled);
+    turret.setAnimation(enabled);
+    radar.setAnimation(enabled);
   }
 
   toggleWireframe(enabled) {
