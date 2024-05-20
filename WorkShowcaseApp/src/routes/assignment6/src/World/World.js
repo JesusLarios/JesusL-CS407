@@ -1,4 +1,5 @@
 import { loadHelicopter } from './components/helicopter/helicopter.js';
+import { loadHelicopters } from './components/helicopters/helicopters.js';
 import { createCamera } from './components/camera.js';
 import { createAxesHelper } from './systems/helpers.js';
 import { createLights } from './components/lights.js';
@@ -21,6 +22,7 @@ let ambientLight;
 let pointLight;
 
 let helicopter;
+let helicopters = [];
 
 class World {
   constructor(container) {
@@ -44,12 +46,19 @@ class World {
   }
 
   async init() {
-    helicopter = await loadHelicopter();
+    const { heli1, heli2, heli3, heli4 } = await loadHelicopters();
 
-    controls.target.copy(helicopter.position);
+    helicopters = [heli1, heli2, heli3, heli4];
 
-    loop.updatables.push(helicopter);
-    scene.add(helicopter);
+    heli2.visible = false;
+    heli3.visible = false;
+    heli4.visible = false;
+
+    helicopter = heli1;
+    controls.target.copy(heli1.position);
+
+    loop.updatables.push(heli1, heli2, heli3, heli4);
+    scene.add(heli1, heli2, heli3, heli4);
   }
 
   render() {
@@ -67,7 +76,6 @@ class World {
 
   driveForward() {
     helicopter.drive('forward');
-    //controls.target.copy(helicopter.position);
   }
 
   driveBackward() {
@@ -96,10 +104,18 @@ class World {
 
   liftDown() {
     helicopter.lift('down');
+
   }
 
   stopLifting() {
     helicopter.lift('stop');
+  }
+
+  switchHelicopter(helicopterNumber) {
+    helicopter.visible = false;
+    helicopter = helicopters[helicopterNumber - 1];
+    helicopter.respawn();
+    helicopter.visible = true;
   }
   
   toggleAnimation(enabled) {
