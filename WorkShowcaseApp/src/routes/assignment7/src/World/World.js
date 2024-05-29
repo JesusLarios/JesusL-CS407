@@ -22,6 +22,7 @@ let ambientLight;
 let pointLight;
 
 let torus;
+let octahedron
 
 class World {
   constructor(container) {
@@ -35,11 +36,10 @@ class World {
     ({directionalLight, ambientLight, pointLight} = createLights());
 
     torus = createTorus();
-    //torus = createOctahedron();
-    //torus = createSphere();
+    octahedron = createOctahedron();
     
     loop.updatables.push(controls, torus);
-    scene.add(directionalLight, ambientLight, pointLight, torus);
+    scene.add(directionalLight, ambientLight, pointLight, torus, octahedron);
 
     const resizer = new Resizer(container, camera, renderer);
 
@@ -78,6 +78,14 @@ class World {
 
   toggleAmbientLight(enabled) {
     ambientLight.visible = enabled;
+  }
+
+  setColorSpeed(speed) {
+    torus.setSpeed(speed);
+  }
+
+  setCollapse(collapse) {
+    torus.setCollapse(collapse);
   }
 }
 
