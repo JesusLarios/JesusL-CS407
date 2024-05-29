@@ -33,6 +33,16 @@
 
         <label for="colorSpeedSlider" class="form-label mt-3">Color change speed: {colorSpeed}</label>
         <input type="range" class="form-label" style="accent-color:blue;" min="1" max="10" step="1" id="colorSpeedSlider" bind:value={colorSpeed} on:change={handleSpeedChange}/>
+
+        <div>
+          <label for="color1" class="form-label mt-4">Color 1</label>
+          <input type="color" class="form-control form-control-color" id="color1" bind:value={color1}>
+        </div>
+
+        <div>
+          <label for="color2" class="form-label mt-4">Color 2</label>
+          <input type="color" class="form-control form-control-color" id="color2" bind:value={color2}>
+        </div>
       </div>
 
       <div class="col-md-7">
@@ -84,6 +94,8 @@
   let ambientLight = true;
   let colorSpeed = 5.0;
   let collapse = false;
+  let color1 = '#ff0000';
+  let color2 = '#00ff00';
 
   onMount(async () => {
     try {
@@ -120,5 +132,16 @@
 
   function handleSpeedChange() {;
     world.setColorSpeed(colorSpeed);
+  }
+
+  $: if (world) {
+    console.log(color1);
+    world.setColor1(color1);
+    world.render();
+  }
+
+  $: if (world) {
+    world.setColor2(color2);
+    world.render();
   }
 </script>
