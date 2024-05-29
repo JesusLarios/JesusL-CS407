@@ -1,7 +1,9 @@
 import { createCamera } from './components/camera.js';
 import { createAxesHelper } from './systems/helpers.js';
 import { createLights } from './components/lights.js';
-import { createPlane } from './components/plane.js';
+import { createTorus } from './components/torus.js';
+import { createOctahedron } from './components/octahedron.js';
+import { createSphere } from './components/sphere.js';
 import { createScene } from './components/scene.js';
 
 import { createControls } from './systems/controls.js';
@@ -19,6 +21,8 @@ let directionalLight;
 let ambientLight;
 let pointLight;
 
+let torus;
+
 class World {
   constructor(container) {
     camera = createCamera();
@@ -30,10 +34,12 @@ class World {
 
     ({directionalLight, ambientLight, pointLight} = createLights());
 
-    const plane = createPlane();
+    torus = createTorus();
+    //torus = createOctahedron();
+    //torus = createSphere();
     
-    loop.updatables.push(controls);
-    scene.add(directionalLight, ambientLight, pointLight, plane);
+    loop.updatables.push(controls, torus);
+    scene.add(directionalLight, ambientLight, pointLight, torus);
 
     const resizer = new Resizer(container, camera, renderer);
 
@@ -41,6 +47,10 @@ class World {
   }
 
   async init() {
+    /*
+    plane = await createPlane();
+    scene.add(plane);
+    */
   }
 
   render() {
@@ -57,12 +67,9 @@ class World {
   }
   
   toggleAnimation(enabled) {
-    turret.setAnimation(enabled);
-    radar.setAnimation(enabled);
   }
 
   toggleWireframe(enabled) {
-    //diamond.setWireframe(enabled);
   }
 
   togglePointLight(enabled) {
