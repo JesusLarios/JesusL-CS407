@@ -25,6 +25,14 @@
           <label class="form-check-label" for="ambientLightToggle">Ambient light</label>
           <input class="form-check-input" type="checkbox" role="switch" id="ambientLightToggle" bind:checked={ambientLight} on:change={toggleAmbientLight}>
         </div>
+
+        <div class="form-check form-switch">
+          <label class="form-check-label" for="collapseToggle">Collapse</label>
+          <input class="form-check-input" type="checkbox" role="switch" id="collapseToggle" bind:checked={collapse} on:change={toggleCollapse}>
+        </div>
+
+        <label for="colorSpeedSlider" class="form-label mt-3">Color change speed: {colorSpeed}</label>
+        <input type="range" class="form-label" style="accent-color:blue;" min="1" max="10" step="1" id="colorSpeedSlider" bind:value={colorSpeed} on:change={handleSpeedChange}/>
       </div>
 
       <div class="col-md-7">
@@ -74,6 +82,8 @@
   let wireframe = false;
   let pointLight = true;
   let ambientLight = true;
+  let colorSpeed = 5.0;
+  let collapse = false;
 
   onMount(async () => {
     try {
@@ -102,5 +112,13 @@
 
   function toggleAmbientLight() {
     world.toggleAmbientLight(ambientLight);
+  }
+
+  function toggleCollapse() {
+    world.setCollapse(collapse);
+  }
+
+  function handleSpeedChange() {;
+    world.setColorSpeed(colorSpeed);
   }
 </script>
