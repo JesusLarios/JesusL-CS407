@@ -2,6 +2,7 @@ import {
     Mesh,
     ShaderMaterial,
     TorusGeometry,
+    Vector3,
   } from 'three';
   
   function createTorus() {
@@ -46,8 +47,8 @@ import {
         vertexShader,
         fragmentShader,
         uniforms: {
-            //color1: { value: new  Vector3(1.0, 0.0, 0.0) },
-            //color2: { value: new  Vector3(0.0, 1.0, 0.0) },
+            //color1: { value: new Vector3(1.0, 0.0, 0.0) },
+            //color2: { value: new Vector3(0.0, 1.0, 0.0) },
             collapse: { value: false},
             speed: { value: 5.0 },
             time: { value: 0.0 },
@@ -55,6 +56,14 @@ import {
     });
   
     const torus = new Mesh(geometry, material);
+
+    torus.setColor1 = (color) => {
+        torus.material.uniforms.color1.value = color;
+    };
+
+    torus.setColor2 = (color) => {
+        torus.material.uniforms.color2.value = color;
+    };
 
     torus.setCollapse = (collapse) => {
         torus.material.uniforms.collapse.value = collapse;
