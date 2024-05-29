@@ -74,8 +74,6 @@
   let wireframe = false;
   let pointLight = true;
   let ambientLight = true;
-  let arcadeMode = false;
-  let currentHelicopter = "1";
 
   onMount(async () => {
     try {
