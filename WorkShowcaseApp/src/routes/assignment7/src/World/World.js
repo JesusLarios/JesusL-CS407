@@ -80,6 +80,14 @@ class World {
     ambientLight.visible = enabled;
   }
 
+  setColor1(color) {
+    torus.setColor1(color);
+  }
+
+  setColor2(color) {
+    torus.setColor2(color);
+  }
+
   setColorSpeed(speed) {
     torus.setSpeed(speed);
   }
