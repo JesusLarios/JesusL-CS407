@@ -135,7 +135,6 @@
   }
 
   $: if (world) {
-    console.log(color1);
     world.setColor1(color1);
     world.render();
   }
