@@ -4,8 +4,22 @@ import {
     TorusGeometry,
     Vector3,
   } from 'three';
+
+// Function provided by ChatGPT
+function hexToRgb(hex) {
+    // Remove the hash at the start if it's there
+    hex = hex.replace(/^#/, '');
+
+    // Parse the r, g, b values
+    let bigint = parseInt(hex, 16);
+    let r = (bigint >> 16) & 255;
+    let g = (bigint >> 8) & 255;
+    let b = bigint & 255;
+
+    return { r, g, b };
+}
   
-  function createTorus() {
+function createTorus() {
     const geometry = new TorusGeometry( 8, 3, 16, 100 );
 
     const vertexShader = `
@@ -28,15 +42,13 @@ import {
     `;
   
     const fragmentShader = `
+        uniform vec3 color1;
+        uniform vec3 color2;
         uniform float speed;
         uniform float time;
         in vec3 vPosition;
   
-        void main() {
-            
-            vec3 color1 = vec3(1.0, 0.0, 0.0);
-            vec3 color2 = vec3(0.0, 1.0, 0.0);
-                
+        void main() {         
             float mixFactor = abs(sin(time/speed));
             vec3 color = mix(color1, color2, mixFactor);
             gl_FragColor = vec4(color, 1.0);
@@ -47,8 +59,8 @@ import {
         vertexShader,
         fragmentShader,
         uniforms: {
-            //color1: { value: new Vector3(1.0, 0.0, 0.0) },
-            //color2: { value: new Vector3(0.0, 1.0, 0.0) },
+            color1: { value: new Vector3(1.0, 0.0, 0.0) },
+            color2: { value: new Vector3(0.0, 1.0, 0.0) },
             collapse: { value: false},
             speed: { value: 5.0 },
             time: { value: 0.0 },
@@ -58,11 +70,13 @@ import {
     const torus = new Mesh(geometry, material);
 
     torus.setColor1 = (color) => {
-        torus.material.uniforms.color1.value = color;
+        const rgb = hexToRgb(color);
+        torus.material.uniforms.color1.value.set(rgb.r / 255, rgb.g / 255, rgb.b / 255);
     };
 
     torus.setColor2 = (color) => {
-        torus.material.uniforms.color2.value = color;
+        const rgb = hexToRgb(color);
+        torus.material.uniforms.color2.value.set(rgb.r / 255, rgb.g / 255, rgb.b / 255);
     };
 
     torus.setCollapse = (collapse) => {
