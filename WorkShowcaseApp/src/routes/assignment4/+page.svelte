@@ -72,7 +72,7 @@
         </button>
         
         <label for="carSpeedSlider" class="form-label mt-3">Top speed: {carSpeed}</label>
-        <input type="range" min="0" max="700" step="10" id="carSpeedSlider" bind:value={carSpeed} on:change={handleSpeedChange}/>
+        <input type="range" class="form-label" style="accent-color:blue;" min="0" max="700" step="10" id="carSpeedSlider" bind:value={carSpeed} on:change={handleSpeedChange}/>
 
         <label for="carColor" class="form-label mt-4">Car body color</label>
         <input type="color" class="form-control form-control-color" id="carColor" bind:value={carColor}>
