@@ -3,7 +3,6 @@ import { createAxesHelper } from './systems/helpers.js';
 import { createLights } from './components/lights.js';
 import { createTorus } from './components/torus.js';
 import { createOctahedron } from './components/octahedron.js';
-import { createSphere } from './components/sphere.js';
 import { createScene } from './components/scene.js';
 
 import { createControls } from './systems/controls.js';
