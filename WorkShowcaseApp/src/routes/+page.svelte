@@ -28,6 +28,7 @@
 		<li><a href="/assignment5">Assignment 5</a></li>
 		<li><a href="/assignment6">Assignment 6</a></li>
 		<li><a href="/assignment7">Assignment 7</a></li>
+		<li><a href="/final">Final</a></li>
 	</ul>
 </section>
 
