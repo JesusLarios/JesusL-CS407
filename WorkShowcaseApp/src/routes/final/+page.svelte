@@ -110,24 +110,16 @@
       document.addEventListener('keydown', (event) => {
         switch (event.key) {
           case 'w':
-            world.driveForward();
+            world.moveCharacter('forward', true);
             break;
           case 's':
-            world.driveBackward();
+            world.moveCharacter('backward', true);
             break;
           case 'a':
-            world.turnLeft();
+            world.moveCharacter('left', true);
             break;
           case 'd':
-            world.turnRight();
-            break;
-          case 'ArrowUp':
-            world.liftUp();
-            break;
-          case 'ArrowDown':
-            world.liftDown();
-            break;
-          default:
+            world.moveCharacter('right', true);
             break;
         }
       });
@@ -135,18 +127,16 @@
       document.addEventListener('keyup', (event) => {
         switch (event.key) {
           case 'w':
+            world.moveCharacter('forward', false);
+            break;
           case 's':
-            world.stopDriving();
+            world.moveCharacter('backward', false);
             break;
           case 'a':
+            world.moveCharacter('left', false);
+            break;
           case 'd':
-            world.stopTurning();
-            break;
-          case 'ArrowUp':
-          case 'ArrowDown':
-            world.stopLifting();
-            break;
-          default:
+            world.moveCharacter('right', false);
             break;
         }
       });
