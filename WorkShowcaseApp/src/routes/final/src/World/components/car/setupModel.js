@@ -1,7 +1,6 @@
 import {
-    Object3D,
     Vector3,
-    Euler,
+    Quaternion,
 } from 'three';
 
 function setupModel(data, camera) {
@@ -18,6 +17,10 @@ function setupModel(data, camera) {
         left: false,
         right: false,
     };
+
+    const targetCameraPosition = new Vector3();
+    const targetCameraQuaternion = new Quaternion();
+    const lerpFactor = 0.1;
 
     model.tick = (delta) => {
         const forwardDirection = new Vector3(1, 0, 0).applyQuaternion(model.quaternion);
@@ -37,10 +40,20 @@ function setupModel(data, camera) {
             }
         }
 
+        // Calculate the target camera position and orientation
         const offset = new Vector3(10, 0, 2);
         offset.applyEuler(model.rotation);
-        camera.position.copy(model.position.clone().add(offset));
+        targetCameraPosition.copy(model.position.clone().add(offset));
         camera.lookAt(model.position);
+        targetCameraQuaternion.copy(camera.quaternion);
+
+        // Interpolate the camera's current position towards the target
+        camera.position.lerp(targetCameraPosition, lerpFactor);
+
+        // Interpolate the camera's current orientation towards the target
+        const currentCameraQuaternion = new Quaternion().copy(camera.quaternion);
+        currentCameraQuaternion.slerp(targetCameraQuaternion, lerpFactor);
+        camera.quaternion.copy(currentCameraQuaternion);
     };
 
     model.move = (direction, state) => {
