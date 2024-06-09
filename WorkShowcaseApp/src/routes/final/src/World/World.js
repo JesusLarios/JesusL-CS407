@@ -1,6 +1,7 @@
-import { loadHelicopters } from './components/helicopters/helicopters.js';
+import { loadJet } from './components/jet/jet.js';
+import { loadCar } from './components/car/car.js';
 import { createCamera } from './components/camera.js';
-import { createAxesHelper } from './systems/helpers.js';
+import { createAxesHelper, createDirectionalLightHelper } from './systems/helpers.js';
 import { createLights } from './components/lights.js';
 import { createPlane } from './components/plane.js';
 import { createScene } from './components/scene.js';
@@ -11,7 +12,6 @@ import { Resizer } from './systems/Resizer.js';
 import { Loop } from './systems/Loop.js';
 
 let scene;
-let controls;
 let camera;
 let renderer;
 let loop;
@@ -20,8 +20,7 @@ let directionalLight;
 let ambientLight;
 let pointLight;
 
-let helicopter;
-let helicopters = [];
+let car;
 
 class World {
   constructor(container) {
@@ -30,45 +29,35 @@ class World {
     renderer = createRenderer();
     loop = new Loop(camera, scene, renderer);
     container.append(renderer.domElement);
-    controls = createControls(camera, renderer.domElement);
+    //controls = createControls(camera, renderer.domElement);
 
     ({directionalLight, ambientLight, pointLight} = createLights());
 
     const plane = createPlane();
     
-    loop.updatables.push(controls);
     scene.add(directionalLight, ambientLight, pointLight, plane);
 
     const resizer = new Resizer(container, camera, renderer);
 
-    scene.add(createAxesHelper());
+    scene.add(createAxesHelper(), createDirectionalLightHelper(directionalLight));
   }
 
   async init() {
-    const { heli1, heli2, heli3, heli4 } = await loadHelicopters();
-
-    helicopters = [heli1, heli2, heli3, heli4];
-
-    heli2.visible = false;
-    heli3.visible = false;
-    heli4.visible = false;
-
-    helicopter = heli1;
-    controls.target.copy(heli1.position);
-
-    loop.updatables.push(heli1, heli2, heli3, heli4);
-
     /*
     const radarModel = await loadRadar();
     radar = radarModel;
     loop.updatables.push(radarModel);
-
-    const turretModel = await loadTurret();
-    turret = turretModel;
-    loop.updatables.push(turretModel);
     */
 
-    scene.add(heli1, heli2, heli3, heli4);
+    const jet = await loadJet();
+    car = await loadCar(camera);
+
+    //camera.lookAt(car.position);
+
+    loop.updatables.push(car);
+
+    scene.add(jet, car);
+    jet.visible = false;
   }
 
   render() {
@@ -84,41 +73,9 @@ class World {
     loop.stop();
   }
 
-  driveForward() {
-    helicopter.drive('forward');
-  }
-
-  driveBackward() {
-    helicopter.drive('backward');
-  }
-
-  stopDriving() {
-    helicopter.drive('stop');
-  }
-
-  turnLeft() {
-    helicopter.turn('left');
-  }
-
-  turnRight() {
-    helicopter.turn('right');
-  }
-
-  stopTurning() {
-    helicopter.turn('stop');
-  }
-
-  liftUp() {
-    helicopter.lift('up');
-  }
-
-  liftDown() {
-    helicopter.lift('down');
-
-  }
-
-  stopLifting() {
-    helicopter.lift('stop');
+  moveCharacter(direction, state) {
+    //character.move(direction, state);
+    car.move(direction, state);
   }
 
   switchHelicopter(helicopterNumber) {
@@ -126,6 +83,7 @@ class World {
     helicopter = helicopters[helicopterNumber - 1];
     helicopter.respawn();
     helicopter.visible = true;
+    helicopter.setWireframe(true);
   }
   
   toggleAnimation(enabled) {
