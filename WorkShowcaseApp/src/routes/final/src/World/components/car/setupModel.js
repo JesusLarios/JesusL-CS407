@@ -9,8 +9,10 @@ function setupModel(data, camera) {
     model.rotation.z = -Math.PI/2;
     model.scale.set(18, 18, 18);
 
+    // Movement settings
     const speed = 15.0;
     const turnSpeed = 1.0
+
     const movement = {
         forward: false,
         backward: false,
@@ -18,6 +20,7 @@ function setupModel(data, camera) {
         right: false,
     };
 
+    // Camera settings
     const targetCameraPosition = new Vector3();
     const targetCameraQuaternion = new Quaternion();
     const lerpFactor = 0.1;
