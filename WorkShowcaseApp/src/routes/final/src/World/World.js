@@ -1,7 +1,7 @@
 import { loadJet } from './components/jet/jet.js';
 import { loadCar } from './components/car/car.js';
 import { createCamera } from './components/camera.js';
-import { createAxesHelper, createDirectionalLightHelper } from './systems/helpers.js';
+import { createAxesHelper, createGridHelper, createDirectionalLightHelper } from './systems/helpers.js';
 import { createLights } from './components/lights.js';
 import { createPlane } from './components/plane.js';
 import { createScene } from './components/scene.js';
@@ -39,7 +39,7 @@ class World {
 
     const resizer = new Resizer(container, camera, renderer);
 
-    scene.add(createAxesHelper(), createDirectionalLightHelper(directionalLight));
+    scene.add(createGridHelper(), createAxesHelper(), createDirectionalLightHelper(directionalLight));
   }
 
   async init() {
