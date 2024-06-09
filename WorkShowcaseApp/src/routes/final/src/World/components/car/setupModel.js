@@ -11,7 +11,7 @@ function setupModel(data, camera) {
     model.scale.set(18, 18, 18);
 
     const speed = 15.0;
-    const turnSpeed = 2.5
+    const turnSpeed = 1.0
     const movement = {
         forward: false,
         backward: false,
@@ -37,12 +37,10 @@ function setupModel(data, camera) {
             }
         }
 
-        /*
-        const offset = new Vector3(0, 5, -10);
+        const offset = new Vector3(10, 0, 2);
         offset.applyEuler(model.rotation);
         camera.position.copy(model.position.clone().add(offset));
         camera.lookAt(model.position);
-        */
     };
 
     model.move = (direction, state) => {
