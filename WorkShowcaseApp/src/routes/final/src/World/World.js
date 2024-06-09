@@ -43,17 +43,10 @@ class World {
   }
 
   async init() {
-    /*
-    const radarModel = await loadRadar();
-    radar = radarModel;
-    loop.updatables.push(radarModel);
-    */
-
     const jet = await loadJet();
-    car = await loadCar(camera);
 
-    //camera.lookAt(car.position);
-
+    const carModel = await loadCar(camera);
+    car = carModel;
     loop.updatables.push(car);
 
     scene.add(jet, car);
