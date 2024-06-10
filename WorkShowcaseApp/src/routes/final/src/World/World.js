@@ -4,6 +4,7 @@ import { createCamera } from './components/camera.js';
 import { createAxesHelper, createGridHelper, createDirectionalLightHelper } from './systems/helpers.js';
 import { createLights } from './components/lights.js';
 import { createPlane } from './components/plane.js';
+import { createOuterWall } from './components/outerWall.js';
 import { createScene } from './components/scene.js';
 
 import { createControls } from './systems/controls.js';
@@ -19,6 +20,7 @@ let loop;
 let directionalLight;
 let ambientLight;
 let pointLight;
+let spotLight;
 
 let car;
 
@@ -31,11 +33,12 @@ class World {
     container.append(renderer.domElement);
     //controls = createControls(camera, renderer.domElement);
 
-    ({directionalLight, ambientLight, pointLight} = createLights());
+    ({directionalLight, ambientLight, pointLight, spotLight} = createLights());
 
     const plane = createPlane();
+    const outerWall = createOuterWall();
     
-    scene.add(directionalLight, ambientLight, pointLight, plane);
+    scene.add(directionalLight, ambientLight, pointLight, spotLight, plane, outerWall);
 
     const resizer = new Resizer(container, camera, renderer);
 
