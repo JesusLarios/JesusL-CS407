@@ -30,25 +30,6 @@
           <label class="form-check-label" for="fogToggle">Fog</label>
           <input class="form-check-input" type="checkbox" role="switch" id="fogToggle" bind:checked={fog} on:change={toggleFog}>
         </div>
-
-        <div class="form-check mt-5">
-          <div>
-            <input class="form-check-input" type="radio" id="helicopter1" name="helicopter" value="1" bind:group={currentHelicopter} on:change={selectHelicopter}>
-            <label class="form-check-label" for="helicopter1">Helicopter 1</label>
-          </div>
-          <div>
-            <input class="form-check-input" type="radio" id="helicopter2" name="helicopter" value="2" bind:group={currentHelicopter} on:change={selectHelicopter}>
-            <label class="form-check-label" for="helicopter2">Helicopter 2</label>
-          </div>
-          <div>
-            <input class="form-check-input" type="radio" id="helicopter3" name="helicopter" value="3" bind:group={currentHelicopter} on:change={selectHelicopter}>
-            <label class="form-check-label" for="helicopter3">Helicopter 3</label>
-          </div>
-          <div>
-            <input class="form-check-input" type="radio" id="helicopter4" name="helicopter" value="4" bind:group={currentHelicopter} on:change={selectHelicopter}>
-            <label class="form-check-label" for="helicopter4">Helicopter 4</label>
-          </div>
-        </div>
       </div>
 
       <div class="col-md-7">
@@ -110,16 +91,16 @@
       document.addEventListener('keydown', (event) => {
         switch (event.key) {
           case 'w':
-            world.moveCharacter('forward', true);
+            world.moveCar('forward', true);
             break;
           case 's':
-            world.moveCharacter('backward', true);
+            world.moveCar('backward', true);
             break;
           case 'a':
-            world.moveCharacter('left', true);
+            world.moveCar('left', true);
             break;
           case 'd':
-            world.moveCharacter('right', true);
+            world.moveCar('right', true);
             break;
         }
       });
@@ -127,16 +108,16 @@
       document.addEventListener('keyup', (event) => {
         switch (event.key) {
           case 'w':
-            world.moveCharacter('forward', false);
+            world.moveCar('forward', false);
             break;
           case 's':
-            world.moveCharacter('backward', false);
+            world.moveCar('backward', false);
             break;
           case 'a':
-            world.moveCharacter('left', false);
+            world.moveCar('left', false);
             break;
           case 'd':
-            world.moveCharacter('right', false);
+            world.moveCar('right', false);
             break;
         }
       });
@@ -165,9 +146,5 @@
 
   function toggleFog() {
     world.setFog(fog);
-  }
-
-  function selectHelicopter(event) {
-    world.switchHelicopter(currentHelicopter);
   }
 </script>
