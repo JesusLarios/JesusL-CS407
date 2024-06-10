@@ -24,6 +24,7 @@ let spotLight;
 let rectAreaLight;
 
 let car;
+let jet;
 
 class World {
   constructor(container) {
@@ -47,14 +48,16 @@ class World {
   }
 
   async init() {
-    const jet = await loadJet();
+    const jetModel = await loadJet();
+    jet = jetModel;
+    loop.updatables.push(jet);
 
     const carModel = await loadCar(camera);
     car = carModel;
     loop.updatables.push(car);
 
     scene.add(jet, car);
-    jet.visible = false;
+    //jet.visible = false;
   }
 
   render() {
@@ -77,6 +80,7 @@ class World {
 
   respawnCar() {
     car.respawn();
+    jet.attack();
   }
 
   setFog(enabled) {
