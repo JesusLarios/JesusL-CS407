@@ -21,6 +21,7 @@ let directionalLight;
 let ambientLight;
 let pointLight;
 let spotLight;
+let rectAreaLight;
 
 let car;
 
@@ -33,12 +34,12 @@ class World {
     container.append(renderer.domElement);
     //controls = createControls(camera, renderer.domElement);
 
-    ({directionalLight, ambientLight, pointLight, spotLight} = createLights());
+    ({directionalLight, ambientLight, pointLight, spotLight, rectAreaLight} = createLights());
 
     const plane = createPlane();
     const outerWall = createOuterWall();
     
-    scene.add(directionalLight, ambientLight, pointLight, spotLight, plane, outerWall);
+    scene.add(directionalLight, ambientLight, pointLight, spotLight, rectAreaLight, plane, outerWall);
 
     const resizer = new Resizer(container, camera, renderer);
 
