@@ -109,6 +109,9 @@
           case 'r':
             world.respawnCar();
             break;
+          case 'f':
+            world.airStrike();
+            break;
         }
       });
 

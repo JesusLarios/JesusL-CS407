@@ -82,6 +82,9 @@ class World {
 
   respawnCar() {
     car.respawn();
+  }
+
+  airStrike() {
     jet.attack();
   }
 
