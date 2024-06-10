@@ -74,6 +74,10 @@ class World {
     car.move(direction, state);
   }
 
+  setFog(enabled) {
+    scene.setFog(enabled);
+  }
+
   switchHelicopter(helicopterNumber) {
     helicopter.visible = false;
     helicopter = helicopters[helicopterNumber - 1];

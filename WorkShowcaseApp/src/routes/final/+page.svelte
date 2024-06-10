@@ -27,8 +27,8 @@
         </div>
 
         <div class="form-check form-switch">
-          <label class="form-check-label" for="arcadeModeToggle">Arcade mode</label>
-          <input class="form-check-input" type="checkbox" role="switch" id="arcadeModeToggle" bind:checked={arcadeMode} on:change={toggleArcadeMode}>
+          <label class="form-check-label" for="fogToggle">Fog</label>
+          <input class="form-check-input" type="checkbox" role="switch" id="fogToggle" bind:checked={fog} on:change={toggleFog}>
         </div>
 
         <div class="form-check mt-5">
@@ -97,7 +97,7 @@
   let wireframe = false;
   let pointLight = true;
   let ambientLight = true;
-  let arcadeMode = false;
+  let fog = true;
   let currentHelicopter = "1";
 
   onMount(async () => {
@@ -163,8 +163,8 @@
     world.toggleAmbientLight(ambientLight);
   }
 
-  function toggleArcadeMode() {
-    world.toggleArcadeMode(arcadeMode);
+  function toggleFog() {
+    world.setFog(fog);
   }
 
   function selectHelicopter(event) {
