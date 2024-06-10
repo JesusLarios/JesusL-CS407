@@ -69,21 +69,17 @@ class World {
     loop.stop();
   }
 
-  moveCharacter(direction, state) {
+  moveCar(direction, state) {
     //character.move(direction, state);
     car.move(direction, state);
   }
 
-  setFog(enabled) {
-    scene.setFog(enabled);
+  respawnCar() {
+    car.respawn();
   }
 
-  switchHelicopter(helicopterNumber) {
-    helicopter.visible = false;
-    helicopter = helicopters[helicopterNumber - 1];
-    helicopter.respawn();
-    helicopter.visible = true;
-    helicopter.setWireframe(true);
+  setFog(enabled) {
+    scene.setFog(enabled);
   }
   
   toggleAnimation(enabled) {
@@ -101,10 +97,6 @@ class World {
 
   toggleAmbientLight(enabled) {
     ambientLight.visible = enabled;
-  }
-
-  toggleArcadeMode(enabled) {
-    helicopter.setArcadeMode(enabled);
   }
 }
 

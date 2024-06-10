@@ -79,7 +79,6 @@
   let pointLight = true;
   let ambientLight = true;
   let fog = true;
-  let currentHelicopter = "1";
 
   onMount(async () => {
     try {
@@ -101,6 +100,9 @@
             break;
           case 'd':
             world.moveCar('right', true);
+            break;
+          case 'r':
+            world.respawnCar();
             break;
         }
       });
