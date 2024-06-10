@@ -1,24 +1,16 @@
-import { PointerLockControls } from 'three/examples/jsm/controls/PointerLockControls.js';
+import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js';
 
 function createControls(camera, canvas) {
-    const controls = new PointerLockControls(camera, canvas);
-    
-    canvas.addEventListener('click', () => {
-        controls.lock();
-    });
+    const controls = new OrbitControls(camera, canvas);
+    controls.target.set(0, 0, -1.5);
 
-    /*
-    controls.addEventListener('lock', () => {
-        console.log('Pointer locked');
-    });
+    // damping and auto rotation require
+    // the controls to be updated each frame
 
-    controls.addEventListener('unlock', () => {
-        console.log('Pointer unlocked');
-    });
-    */
+    // this.controls.autoRotate = true;
+    controls.enableDamping = true;
 
-    controls.tick = (delta) => {
-    };
+    controls.tick = () => controls.update();
 
     return controls;
 }
