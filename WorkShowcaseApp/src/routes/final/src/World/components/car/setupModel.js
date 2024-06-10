@@ -1,6 +1,11 @@
 import {
     Vector3,
     Quaternion,
+    SpotLight,
+    SpotLightHelper,
+    Mesh,
+    BoxGeometry,
+    MeshStandardMaterial,
 } from 'three';
 
 function setupModel(data, camera) {
@@ -8,6 +13,34 @@ function setupModel(data, camera) {
 
     model.rotation.z = -Math.PI/2;
     model.scale.set(18, 18, 18);
+
+    /*
+
+    const geometry = new BoxGeometry(0.25/18, 0.25/18, 0.25/18);
+    const material = new MeshStandardMaterial({ color: 0x00ff00 });
+    const cube = new Mesh(geometry, material);
+    //cube.position.set(-1.2/18, -0.4/18, 0.3/18); // z, x, y
+    cube.position.set(-1.2/18, 0.5/18, 0.3/18); // z, x, y
+    model.add(cube);
+
+    // Headlights
+    const headlightLeft = new SpotLight(0xffffff, 50);
+    const headlightRight = new SpotLight(0xffffff, 200, 25.0, Math.PI / 4, 0.5, 1.0);
+    
+    // Position headlights in front of the car
+    headlightLeft.position.set(0.5, 1, 0.5);  // Adjust as needed
+    headlightRight.position.set(0.5, -1, 0.5); // Adjust as needed
+
+    // Add the headlights to the model
+    model.add(headlightLeft);
+    model.add(headlightRight);
+
+    // Optionally, add helpers to visualize the headlights
+    const headlightHelperLeft = new SpotLightHelper(headlightLeft);
+    const headlightHelperRight = new SpotLightHelper(headlightRight);
+    model.add(headlightHelperLeft);
+    model.add(headlightHelperRight);
+    */
 
     // Movement settings
     const speed = 15.0;

@@ -5,6 +5,7 @@ import { createAxesHelper, createGridHelper, createDirectionalLightHelper } from
 import { createLights } from './components/lights.js';
 import { createPlane } from './components/plane.js';
 import { createOuterWall } from './components/outerWall.js';
+import { createDiamond } from './components/diamond.js';
 import { createScene } from './components/scene.js';
 
 import { createControls } from './systems/controls.js';
@@ -24,6 +25,7 @@ let pointLight;
 let spotLight;
 let rectAreaLight;
 
+let diamond;
 let car;
 let jet;
 
@@ -40,9 +42,10 @@ class World {
 
     const plane = createPlane();
     const outerWall = createOuterWall();
+    diamond = createDiamond();
 
-    loop.updatables.push(controls);
-    scene.add(directionalLight, ambientLight, pointLight, spotLight, rectAreaLight, plane, outerWall);
+    loop.updatables.push(controls, diamond);
+    scene.add(directionalLight, ambientLight, pointLight, spotLight, rectAreaLight, plane, outerWall, diamond);
 
     const resizer = new Resizer(container, camera, renderer);
 
