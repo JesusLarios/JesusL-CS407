@@ -1,12 +1,12 @@
 import {
-    Object3D,
+    Group,
     BoxGeometry,
     Mesh,
     MeshStandardMaterial,
   } from 'three';
   
   function createOuterWall() {
-    const outerWall = new Object3D();
+    const outerWall = new Group();
 
     const frontFace = outerWallFace();
     const backFace = outerWallFace();
