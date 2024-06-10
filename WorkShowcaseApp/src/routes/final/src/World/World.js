@@ -13,6 +13,7 @@ import { Resizer } from './systems/Resizer.js';
 import { Loop } from './systems/Loop.js';
 
 let scene;
+let controls;
 let camera;
 let renderer;
 let loop;
@@ -33,13 +34,14 @@ class World {
     renderer = createRenderer();
     loop = new Loop(camera, scene, renderer);
     container.append(renderer.domElement);
-    //controls = createControls(camera, renderer.domElement);
+    controls = createControls(camera, renderer.domElement);
 
     ({directionalLight, ambientLight, pointLight, spotLight, rectAreaLight} = createLights());
 
     const plane = createPlane();
     const outerWall = createOuterWall();
-    
+
+    loop.updatables.push(controls);
     scene.add(directionalLight, ambientLight, pointLight, spotLight, rectAreaLight, plane, outerWall);
 
     const resizer = new Resizer(container, camera, renderer);
@@ -102,6 +104,15 @@ class World {
 
   toggleAmbientLight(enabled) {
     ambientLight.visible = enabled;
+  }
+
+  toggleCarCamera(enabled) {
+    car.setCarCamera(enabled);
+    if (enabled) {
+      controls.enabled = false;
+    } else {
+      controls.enabled = true;
+    }
   }
 }
 

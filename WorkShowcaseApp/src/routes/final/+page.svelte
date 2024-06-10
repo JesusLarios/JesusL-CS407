@@ -16,6 +16,10 @@
           {wireframe ? 'Hide' : 'Show'} wireframe
         </button>
 
+        <button on:click={toggleCarCamera}>
+          Enable {carCamera ? 'orbit controls' : 'car camera'}
+        </button>
+
         <div class="form-check form-switch mt-5">
           <label class="form-check-label" for="pointLightToggle">Point light</label>
           <input class="form-check-input" type="checkbox" role="switch" id="pointLightToggle" bind:checked={pointLight} on:change={togglePointLight}>
@@ -48,7 +52,7 @@
           <li>Have fun!</li>
         </ul>
 
-        <p>More explanation of controls here.</p>
+        <p>Control the car with WASD. Press r to respawn.</p>
       </div>
   </div>
 </div>
@@ -76,6 +80,7 @@
   let world;
   let animation = false;
   let wireframe = false;
+  let carCamera = true;
   let pointLight = true;
   let ambientLight = true;
   let fog = true;
@@ -136,6 +141,11 @@
   function toggleWireframe() {
     wireframe = !wireframe;
     world.toggleWireframe(wireframe);
+  }
+
+  function toggleCarCamera() {
+    carCamera = !carCamera;
+    world.toggleCarCamera(carCamera);
   }
 
   function togglePointLight() {
