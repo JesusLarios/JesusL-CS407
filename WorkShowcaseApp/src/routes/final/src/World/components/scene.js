@@ -4,8 +4,7 @@ function createScene() {
   const scene = new Scene();
 
   scene.background = new Color('lightsteelblue');
-
-  //scene.fog = new Fog(0xcccccc, 10, 20);
+  
   scene.fog = new FogExp2( 0xcccccc, 0.019 );
 
   scene.setFog = (visible) => {
