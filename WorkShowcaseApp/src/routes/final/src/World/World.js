@@ -37,6 +37,7 @@ class World {
     loop = new Loop(camera, scene, renderer);
     container.append(renderer.domElement);
     controls = createControls(camera, renderer.domElement);
+    controls.enabled = false;
 
     ({directionalLight, ambientLight, pointLight, spotLight, rectAreaLight} = createLights());
 
@@ -96,8 +97,7 @@ class World {
   }
   
   toggleAnimation(enabled) {
-    turret.setAnimation(enabled);
-    radar.setAnimation(enabled);
+    diamond.setAnimation(enabled);
   }
 
   toggleWireframe(enabled) {
