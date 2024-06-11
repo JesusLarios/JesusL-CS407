@@ -52,7 +52,7 @@
           <li>Have fun!</li>
         </ul>
 
-        <p>Control the car with WASD. Press r to respawn.</p>
+        <p>Control the car with WASD. Press "r" to respawn and "f" for a jet fly by. Use your mouse to control the camera using orbit controls (when enabled).</p>
       </div>
   </div>
 </div>
