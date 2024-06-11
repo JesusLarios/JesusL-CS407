@@ -101,7 +101,9 @@ class World {
   }
 
   toggleWireframe(enabled) {
-    //diamond.setWireframe(enabled);
+    car.setWireframe(enabled);
+    jet.setWireframe(enabled);
+    diamond.setWireframe(enabled);
   }
 
   togglePointLight(enabled) {

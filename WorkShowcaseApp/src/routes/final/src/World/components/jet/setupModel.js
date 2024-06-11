@@ -101,6 +101,14 @@ function setupModel(data) {
         model.visible = true;
     };
 
+    model.setWireframe = (enabled) => {
+        model.traverse((child) => {
+            if (child.isMesh && child.material) {
+                child.material.wireframe = enabled;
+            }
+        });
+    };
+
     return model;
 }
 

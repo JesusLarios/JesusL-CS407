@@ -120,6 +120,13 @@ function setupModel(data, camera) {
         carCamera = enable;
     };
 
+    model.setWireframe = (enabled) => {
+        model.traverse((child) => {
+            if (child.isMesh && child.material) {
+                child.material.wireframe = enabled;
+            }
+        });
+    };
     
     return model;
 }
