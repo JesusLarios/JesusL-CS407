@@ -89,6 +89,7 @@
 
   function selectHelicopter(event) {
     world.switchHelicopter(currentHelicopter);
+    arcadeMode = false;
   }
 </script>
 
