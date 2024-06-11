@@ -79,7 +79,7 @@
           <li>Implement orbit and optionally camera navigation through the scene</li>
         </ul>
 
-        <p>For the axes helper, red represents the x-axis, green represents the y-axis, and blue represents the z-axis. You can control the camera using your mouse.</p>
+        <p>For the axes helper, red represents the x-axis, green represents the y-axis, and blue represents the z-axis. You can control the camera using your mouse (Left and right click to move around. Scroll wheel to zoom in and out.).</p>
       </div>
   </div>
 </div>
