@@ -66,9 +66,11 @@ class World {
   }
   
   toggleAnimation(enabled) {
+    torus.setAnimation(enabled);
   }
 
   toggleWireframe(enabled) {
+    torus.setWireFrame(enabled);
   }
 
   togglePointLight(enabled) {

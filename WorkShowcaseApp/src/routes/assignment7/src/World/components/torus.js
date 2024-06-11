@@ -69,6 +69,8 @@ function createTorus() {
   
     const torus = new Mesh(geometry, material);
 
+    let rotationSpeed = 0;
+
     torus.setColor1 = (color) => {
         const rgb = hexToRgb(color);
         torus.material.uniforms.color1.value.set(rgb.r / 255, rgb.g / 255, rgb.b / 255);
@@ -87,8 +89,18 @@ function createTorus() {
         torus.material.uniforms.speed.value = speed;
     };
 
+    torus.setWireFrame = (enabled) => {
+        torus.material.wireframe = enabled;
+    };
+
+    torus.setAnimation = (enabled) => {
+        rotationSpeed = enabled ? Math.PI / 4 : 0;
+    };
+
     torus.tick = (delta) => {
         torus.material.uniforms.time.value += delta;
+        torus.rotation.x += rotationSpeed * delta;
+        torus.rotation.y += rotationSpeed * delta;
     };
   
     return torus;
