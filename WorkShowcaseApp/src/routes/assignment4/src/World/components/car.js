@@ -74,7 +74,7 @@ function createCar() {
     }
 
     // Driving settings
-    let topSpeed = MathUtils.degToRad(0);
+    let topSpeed = MathUtils.degToRad(310);
     let currentSpeed = MathUtils.degToRad(0);
     let acceleration = MathUtils.degToRad(150);
     let driveDirection = 'stop';

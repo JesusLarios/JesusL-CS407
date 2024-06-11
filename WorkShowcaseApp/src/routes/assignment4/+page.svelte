@@ -4,7 +4,7 @@
 
   let world;
   let carRotation = false;
-  let carSpeed = 0;
+  let carSpeed = 310;
   let carColor = '#d68b09';
   let pointLightColor = '#e33505';
   let pointLightEnabled = true;
