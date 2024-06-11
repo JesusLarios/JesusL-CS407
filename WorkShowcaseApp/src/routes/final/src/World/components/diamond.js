@@ -142,7 +142,7 @@ function createDiamond() {
     diamond.position.set(10, 2, 10);
     diamond.rotation.x = -Math.PI / 2;
     diamond.scale.set(0.5, 0.5, 0.5);
-    diamond.rotationSpeed = MathUtils.degToRad(100);
+    diamond.rotationSpeed = 0;
 
     diamond.setAnimation = (enabled) => {
         if (enabled) {
