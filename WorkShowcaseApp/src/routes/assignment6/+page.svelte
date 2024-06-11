@@ -163,7 +163,7 @@
           <li>Exercise both of these with some form of interactive control.</li>
         </ul>
 
-        <p>More explanation of controls here.</p>
+        <p>Control lift with up and down arrow keys. Use WASD to move around (only works when flying). You can control the camera using your mouse (Left and right click to move around. Scroll wheel to zoom in and out.).</p>
       </div>
   </div>
 </div>
