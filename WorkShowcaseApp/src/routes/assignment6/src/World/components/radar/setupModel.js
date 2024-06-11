@@ -6,7 +6,6 @@ function setupModel(data) {
 
     const mixer = new AnimationMixer(model);
     const action = mixer.clipAction(clip);
-    action.play();
 
     model.tick = (delta) => {
         mixer.update(delta);
@@ -19,6 +18,14 @@ function setupModel(data) {
             action.stop();
         }
     }
+
+    model.setWireframe = (enabled) => {
+        model.traverse((child) => {
+            if (child.isMesh && child.material) {
+                child.material.wireframe = enabled;
+            }
+        });
+    };
 
     return model;
     }

@@ -89,6 +89,7 @@
 
   function selectHelicopter(event) {
     world.switchHelicopter(currentHelicopter);
+    world.toggleWireframe(wireframe); // Ensure current wireframe setting is applied
     arcadeMode = false;
   }
 </script>

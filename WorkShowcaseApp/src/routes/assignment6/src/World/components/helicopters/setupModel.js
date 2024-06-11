@@ -95,6 +95,14 @@ function setupModel(data) {
         landingPoint = point;
     }
 
+    model.setWireframe = (enabled) => {
+        model.traverse((child) => {
+            if (child.isMesh && child.material) {
+                child.material.wireframe = enabled;
+            }
+        });
+    };
+
     return model;
     }
     

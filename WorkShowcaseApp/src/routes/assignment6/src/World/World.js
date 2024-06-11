@@ -136,7 +136,9 @@ class World {
   }
 
   toggleWireframe(enabled) {
-    //diamond.setWireframe(enabled);
+    helicopter.setWireframe(enabled);
+    turret.setWireframe(enabled);
+    radar.setWireframe(enabled);
   }
 
   togglePointLight(enabled) {
