@@ -62,7 +62,7 @@
           <li>Include more than one object in your scene, but only have your shaders applied to one of those objects. This will enable you to see how different "materials" (and thus shaders) are used for different objects.</li>
         </ul>
 
-        <p>More explanation of controls here.</p>
+        <p>Use your mouse to control the camera using orbit controls.</p>
       </div>
   </div>
 </div>
